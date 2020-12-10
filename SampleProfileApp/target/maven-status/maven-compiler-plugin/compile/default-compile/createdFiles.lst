@@ -1,0 +1,9 @@
+servlet\TestServlet.class
+Entity\Role.class
+com\mycompany\sampleprofileapp\config\Producers.class
+Entity\Role_.class
+client\ExampleClient.class
+com\mycompany\sampleprofileapp\service\ExampleService.class
+com\mycompany\sampleprofileapp\service\HealthCheckService.class
+com\mycompany\sampleprofileapp\config\BootStrap.class
+com\mycompany\sampleprofileapp\config\CrossOriginResourceSharingFilter.class
