@@ -1,0 +1,17 @@
+token\MPJWTToken.class
+token\GenerateToken.class
+myproject\shopfront\service\ProductClient.class
+servlets\UserServlet.class
+servlets\Logout.class
+myproject\shopfront\config\BootStrap.class
+servlets\HomeServlet.class
+myproject\shopfront\config\Producers.class
+auth\ShopAuthenticationMechanism.class
+myproject\shopfront\service\ExampleService.class
+servlets\ShopServlet.class
+myproject\shopfront\model\Product.class
+myproject\shopfront\service\HealthCheckService.class
+myproject\shopfront\config\CrossOriginResourceSharingFilter.class
+project\MyCredentials.class
+servlets\testServlet.class
+project\Project.class

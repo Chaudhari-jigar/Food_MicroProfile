@@ -50,6 +50,12 @@ public class TestServlet extends HttpServlet {
             for (Role ro : r) {
                 out.println("<br />id:-"+ro.getRoleID()+"Name:-"+ro.getRoleName());
             }
+            
+//            emf = Persistence.createEntityManagerFactory("MyPU1");
+//            em = emf.createEntityManager();
+//            Collection<Role> books = em.createNamedQuery("Role.findAll").getResultList();
+//            for(Role b : books)
+//                out.println("<h2>id = "+ b.getRoleID()+" Book name : " + b.getRoleName()+"<h2>");
             out.println("</body>");
             out.println("</html>");
         }
