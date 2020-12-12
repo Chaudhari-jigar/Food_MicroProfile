@@ -7,6 +7,8 @@ package client;
 
 import Entity.Role;
 import java.util.Collection;
+import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,23 +23,12 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
  *
  * @author admin
  */
+@ApplicationScoped
 @RegisterRestClient(baseUri = "http://localhost:8080/SampleProfileApp/rest/example")
-@ClientHeaderParam(name = "X-Application-Name",value = "Food-Manage-APP")
+//@ClientHeaderParam(name = "X-Application-Name",value = "Food-Manage-APP")
+@Path("/example")
 public interface ExampleClient {
-    @GET
-    @Path("Test")
-    @Produces(MediaType.TEXT_PLAIN)
-    String get();
-    
-    @POST
-    @Path("Role")
-    @Consumes(MediaType.APPLICATION_JSON)
-    void addRole(String roleName);
-//    void updateCategory(int CategoryID,String CategoryName);
-//    void removeCategory(int CategoryID);
-    @GET
-    @Path("getRole")
-    @Produces(MediaType.APPLICATION_JSON)
-    Collection<Role> getAllRoles();
-//    Category getCategoryOfID(int CategoryID);
+     @GET
+     @Produces(MediaType.APPLICATION_JSON)
+     Collection<Role> getAllRoles();
 }

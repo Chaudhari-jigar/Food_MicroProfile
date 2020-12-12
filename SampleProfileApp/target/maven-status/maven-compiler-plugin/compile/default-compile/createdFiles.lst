@@ -1,9 +1,10 @@
-servlet\TestServlet.class
+client\ExampleClient.class
 Entity\Role.class
+myproject\SampleProfileApp\model\RoleService.class
+com\mycompany\sampleprofileapp\config\CrossOriginResourceSharingFilter.class
+com\mycompany\sampleprofileapp\service\RoleResource.class
+servlet\TestServlet.class
 com\mycompany\sampleprofileapp\config\Producers.class
 Entity\Role_.class
-client\ExampleClient.class
-com\mycompany\sampleprofileapp\service\ExampleService.class
 com\mycompany\sampleprofileapp\service\HealthCheckService.class
 com\mycompany\sampleprofileapp\config\BootStrap.class
-com\mycompany\sampleprofileapp\config\CrossOriginResourceSharingFilter.class

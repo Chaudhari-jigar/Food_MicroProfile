@@ -24,6 +24,8 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 public class TestServlet extends HttpServlet {
 
     @Inject @RestClient ExampleClient rc;
+//        @Inject @RestClient Exa productclient;
+Collection<Role> roles;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

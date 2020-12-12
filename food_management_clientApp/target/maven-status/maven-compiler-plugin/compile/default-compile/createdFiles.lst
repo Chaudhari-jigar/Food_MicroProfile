@@ -1,7 +1,0 @@
-com\mycompany\food_management_clientapp\config\Producers.class
-com\mycompany\food_management_clientapp\service\HealthCheckService.class
-servlet\RestServlet.class
-com\mycompany\food_management_clientapp\config\BootStrap.class
-com\mycompany\food_management_clientapp\service\ExampleService.class
-com\mycompany\food_management_clientapp\config\CrossOriginResourceSharingFilter.class
-client\RestClient1.class
