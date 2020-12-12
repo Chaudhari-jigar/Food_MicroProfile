@@ -23,9 +23,10 @@ public class CategoryService{
     Collection<Category> categorys;
     Collection<Category> AllCategorys;
 
-    public CategoryService(EntityManager em) {
-        em = Persistence.createEntityManagerFactory("categorypu").createEntityManager();
+    public CategoryService() {
+        em = Persistence.createEntityManagerFactory("MyPU").createEntityManager();
     }
+
 
     public EntityManager getEm() {
         return em;
@@ -44,13 +45,13 @@ public class CategoryService{
     }
 
     public Collection<Category> getAllCategorys() {
+        
         return em.createNamedQuery("Category.findAll").getResultList();
     }
 
     public void setAllCategorys(Collection<Category> AllCategorys) {
         this.AllCategorys = AllCategorys;
     }
-    
-
+   
 }
 
