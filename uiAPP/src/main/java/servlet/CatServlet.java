@@ -47,18 +47,31 @@ public class CatServlet extends HttpServlet {
             out.println("<h1>Servlet CatServlet at " + request.getContextPath() + "</h1>");
             
             try{
-                String te=request.getParameter("CategoryName");
+                
                 if(request.getParameter("CategoryName")!=null){
+                    String te=request.getParameter("CategoryName");
                     Category ca=new Category();
                     ca.setCategoryName(te);
                     categoryclient.addCategory(ca);
+                }
+                if(request.getParameter("upCategoryName")!=null){
+                    Category ca=new Category();
+                    String temp1=request.getParameter("upCategoryId");
+                    ca.setCategoryName(request.getParameter("upCategoryName"));
+                    ca.setCategoryID(Integer.parseInt(temp1));
+                    categoryclient.editCategoey(Integer.parseInt(temp1), ca);
                 }
 //                    categoryclient.deleteCategory(9);
                     categorys = categoryclient.getAllCategorys();
                     out.println("<table>");
                     for(Category p : categorys)
                     {
-                        out.println("<tr><td>"+p.getCategoryID()+"</td><td>"+p.getCategoryName()+"</td><td><a href='/uiAPP/DeleteServlet?id="+p.getCategoryID()+"'>Delete</a></td></tr>");   
+                        out.println("<tr>"
+                                + "<td>"+p.getCategoryID()+"</td>"
+                                + "<td>"+p.getCategoryName()+"</td>"
+                                + "<td><a href='/uiAPP/UpdateServlet?id="+p.getCategoryID()+"'>Update</a></td>"
+                                + "<td><a href='/uiAPP/DeleteServlet?id="+p.getCategoryID()+"'>Delete</a></td>"
+                                + "</tr>");   
                     }
                     out.println("</table>");
                     out.println("<a href='/uiAPP/AddServlet'>Add Category</a>");

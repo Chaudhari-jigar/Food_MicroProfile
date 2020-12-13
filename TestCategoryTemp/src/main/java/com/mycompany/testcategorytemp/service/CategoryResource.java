@@ -48,4 +48,11 @@ public class CategoryResource {
     public void deleteCategory(@PathParam("Categoryid") int CategoryID){
         categoryService.removeCategory(CategoryID);
     }
+    
+    @GET
+    @Path("getCategoryOfID/{Categoryid}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Category getCategoryOfID(@PathParam("Categoryid")int cat) {
+        return categoryService.getCategoryOfID(cat);
+    }
 }

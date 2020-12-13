@@ -71,6 +71,13 @@ public class CategoryService{
          em.merge(c);
          em.getTransaction().commit();
     }
+    
+    public Category getCategoryOfID(int CategoryID) {
+//        EntityTransaction entityTransaction = em.getTransaction();
+//         entityTransaction.begin();
+        Category c =(Category)em.find(Category.class,CategoryID);
+        return c;
+    }  
 
 }
 

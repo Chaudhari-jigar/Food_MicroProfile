@@ -12,6 +12,10 @@
         <servlet-name>DeleteServlet</servlet-name>
         <servlet-class>servlet.DeleteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateServlet</servlet-name>
+        <servlet-class>servlet.UpdateServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CatServlet</servlet-name>
         <url-pattern>/CatServlet</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateServlet</servlet-name>
+        <url-pattern>/UpdateServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

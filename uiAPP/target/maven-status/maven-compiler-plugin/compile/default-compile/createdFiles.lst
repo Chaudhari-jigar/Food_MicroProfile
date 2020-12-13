@@ -3,6 +3,7 @@ com\mycompany\uiapp\config\Producers.class
 com\mycompany\uiapp\service\ExampleService.class
 client\CategoryClient.class
 com\mycompany\uiapp\config\CrossOriginResourceSharingFilter.class
+servlet\UpdateServlet.class
 model\Category.class
 servlet\CatServlet.class
 servlet\AddServlet.class
