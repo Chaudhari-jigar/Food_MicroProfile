@@ -10,6 +10,7 @@ import java.util.Collection;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 /**
@@ -23,18 +24,11 @@ public class CategoryService{
     Collection<Category> categorys;
     Collection<Category> AllCategorys;
 
-    public CategoryService(EntityManager em) {
-        em = Persistence.createEntityManagerFactory("categorypu").createEntityManager();
+    public CategoryService() {
+        em = Persistence.createEntityManagerFactory("MyPU").createEntityManager();
     }
 
-    public EntityManager getEm() {
-        return em;
-    }
-
-    public void setEm(EntityManager em) {
-        this.em = em;
-    }
-
+    
     public Collection<Category> getCategorys() {
         return categorys;
     }
@@ -44,13 +38,39 @@ public class CategoryService{
     }
 
     public Collection<Category> getAllCategorys() {
+        em = Persistence.createEntityManagerFactory("MyPU").createEntityManager();
         return em.createNamedQuery("Category.findAll").getResultList();
     }
 
     public void setAllCategorys(Collection<Category> AllCategorys) {
         this.AllCategorys = AllCategorys;
     }
+
+    public void addCategory(String cat1) {
+        EntityTransaction entityTransaction = em.getTransaction();
+        entityTransaction.begin();
+        Category c = new Category();
+        c.setCategoryName(cat1);
+        em.persist(c);
+        em.getTransaction().commit();
+    }
     
+    public void removeCategory(int id){
+        EntityTransaction entityTransaction = em.getTransaction();
+        entityTransaction.begin();
+        Category c = (Category) em.find(Category.class, id);
+        em.remove(c);
+        em.getTransaction().commit();
+    }
+    
+    public void updateCategory(int CategoryID, String CategoryName) {
+         EntityTransaction entityTransaction = em.getTransaction();
+         entityTransaction.begin();
+         Category c = (Category)em.find(Category.class, CategoryID);
+         c.setCategoryName(CategoryName);
+         em.merge(c);
+         em.getTransaction().commit();
+    }
 
 }
 

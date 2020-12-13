@@ -45,14 +45,23 @@ public class CatServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet CatServlet at " + request.getContextPath() + "</h1>");
+            
             try{
+                String te=request.getParameter("CategoryName");
+                if(request.getParameter("CategoryName")!=null){
+                    Category ca=new Category();
+                    ca.setCategoryName(te);
+                    categoryclient.addCategory(ca);
+                }
+//                    categoryclient.deleteCategory(9);
                     categorys = categoryclient.getAllCategorys();
                     out.println("<table>");
                     for(Category p : categorys)
                     {
-                        out.println("<tr><td>"+p.getCategoryID()+"</td><td>"+p.getCategoryName()+"</td></tr>");   
+                        out.println("<tr><td>"+p.getCategoryID()+"</td><td>"+p.getCategoryName()+"</td><td><a href='/uiAPP/DeleteServlet?id="+p.getCategoryID()+"'>Delete</a></td></tr>");   
                     }
-                    out.println("</table>");                    
+                    out.println("</table>");
+                    out.println("<a href='/uiAPP/AddServlet'>Add Category</a>");
             }
            catch(Exception e)
            {

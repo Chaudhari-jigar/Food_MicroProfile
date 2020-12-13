@@ -4,9 +4,25 @@
         <servlet-name>CatServlet</servlet-name>
         <servlet-class>servlet.CatServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddServlet</servlet-name>
+        <servlet-class>servlet.AddServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>servlet.DeleteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CatServlet</servlet-name>
         <url-pattern>/CatServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddServlet</servlet-name>
+        <url-pattern>/AddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
