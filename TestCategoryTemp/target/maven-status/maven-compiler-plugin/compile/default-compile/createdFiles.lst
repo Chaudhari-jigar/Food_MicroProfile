@@ -1,0 +1,8 @@
+com\mycompany\testcategorytemp\config\CrossOriginResourceSharingFilter.class
+Entity\Category.class
+com\mycompany\testcategorytemp\service\CategoryResource.class
+model\CategoryService.class
+com\mycompany\testcategorytemp\config\Producers.class
+com\mycompany\testcategorytemp\config\BootStrap.class
+com\mycompany\testcategorytemp\service\HealthCheckService.class
+Entity\Category_.class
