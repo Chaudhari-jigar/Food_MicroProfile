@@ -4,9 +4,17 @@
         <servlet-name>CatServlet</servlet-name>
         <servlet-class>servlet.CatServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProdServlet</servlet-name>
+        <servlet-class>servlet.ProdServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CatServlet</servlet-name>
         <url-pattern>/CatServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdServlet</servlet-name>
+        <url-pattern>/ProdServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

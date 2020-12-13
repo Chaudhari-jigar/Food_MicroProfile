@@ -1,8 +1,13 @@
 com\mycompany\uiapp\config\Producers.class
+servlet\CatServlet.class
+servlet\ProdServlet.class
+com\mycompany\uiapp\config\BootStrap.class
+client\ProductClient.class
 com\mycompany\uiapp\service\ExampleService.class
 client\CategoryClient.class
 com\mycompany\uiapp\config\CrossOriginResourceSharingFilter.class
+model\Role.class
+model\Product.class
 model\Category.class
-servlet\CatServlet.class
 com\mycompany\uiapp\service\HealthCheckService.class
-com\mycompany\uiapp\config\BootStrap.class
+model\User.class

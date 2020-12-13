@@ -6,6 +6,7 @@
 package servlet;
 
 import client.CategoryClient;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Category;
+
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 /**
@@ -23,7 +25,9 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
  */
 public class CatServlet extends HttpServlet {
         @Inject @RestClient CategoryClient categoryclient;
+        
         Collection<Category> categorys;
+        
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -48,9 +52,10 @@ public class CatServlet extends HttpServlet {
             try{
                     categorys = categoryclient.getAllCategorys();
                     out.println("<table>");
-                    for(Category p : categorys)
+                    out.println("<tr><td>---------------Category List---------------</td></tr>");
+                    for(Category c : categorys)
                     {
-                        out.println("<tr><td>"+p.getCategoryID()+"</td><td>"+p.getCategoryName()+"</td></tr>");   
+                        out.println("<tr><td>"+c.getCategoryID()+"</td><td>"+c.getCategoryName()+"</td></tr>");   
                     }
                     out.println("</table>");                    
             }
