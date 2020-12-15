@@ -1,26 +1,32 @@
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\com\mycompany\uiapp\service\ExampleService.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\model\Category.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\servlet\CatServlet.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\com\mycompany\uiapp\service\package-info.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\ProductServlet\DeleteProduct.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\com\mycompany\uiapp\config\CrossOriginResourceSharingFilter.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\servlet\DeleteServlet.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\client\CategoryClient.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\com\mycompany\uiapp\config\Producers.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\com\mycompany\uiapp\config\BootStrap.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\project\MyCredentials.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\token\GenerateToken.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\servlet\AddServlet.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\loginServlet\LoginServlet.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\ProductServlet\UpdateProduct.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\client\ProductClient.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\token\MPJWTToken.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\com\mycompany\uiapp\service\HealthCheckService.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\servlet\UpdateServlet.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\ProductServlet\ViewProduct.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\model\Product.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\project\Project.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\model\Role.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\model\User.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\ProductServlet\AddProduct.java
-D:\Sem-9\Kamlendu Sir\All Project Netbeans\Temp\mavenproject1\uiAPP\src\main\java\auth\ShopAuthenticationMechanism.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\model\Product.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\UserServlet\RegisterUser.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\com\mycompany\uiapp\service\HealthCheckService.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\com\mycompany\uiapp\service\package-info.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\ProductServlet\DeleteProduct.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\UserServlet\RegisterDealer.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\project\MyCredentials.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\token\GenerateToken.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\client\ProductClient.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\client\CategoryClient.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\servlet\AddServlet.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\loginServlet\LoginServlet.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\servlet\CatServlet.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\UserServlet\RegisterVendor.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\ProductServlet\ViewProduct.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\servlet\UpdateServlet.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\com\mycompany\uiapp\service\ExampleService.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\auth\ShopAuthenticationMechanism.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\client\UserClient.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\token\MPJWTToken.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\com\mycompany\uiapp\config\BootStrap.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\model\User.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\ProductServlet\UpdateProduct.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\ProductServlet\AddProduct.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\com\mycompany\uiapp\config\Producers.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\model\Category.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\beans\CategoryManageBean.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\model\Role.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\servlet\DeleteServlet.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\com\mycompany\uiapp\config\CrossOriginResourceSharingFilter.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\project\Project.java
+F:\SEM 9\Practical\Food_Managment_System\uiAPP\src\main\java\UserServlet\ViewUsers.java

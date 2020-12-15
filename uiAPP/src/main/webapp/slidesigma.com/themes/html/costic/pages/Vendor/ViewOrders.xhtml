@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsf/core"
+      xmlns:x="http://xmlns.jcp.org/jsf/core"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1"/>
+        <title>View Orders</title>
+        <!-- Iconic Fonts -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link href="../../vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="../../vendors/iconic-fonts/flat-icons/flaticon.css"/>
+        <link rel="stylesheet" href="../../vendors/iconic-fonts/cryptocoins/cryptocoins.css"/>
+        <link rel="stylesheet" href="../../vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css"/>
+        <!-- Bootstrap core CSS -->
+        <link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- jQuery UI -->
+        <link href="../../assets/css/jquery-ui.min.css" rel="stylesheet"/>
+        <!-- Page Specific CSS (Slick Slider.css) -->
+        <link href="../../assets/css/slick.css" rel="stylesheet"/>
+        <link href="../../assets/css/datatables.min.css" rel="stylesheet"/>
+        <!-- Costic styles -->
+        <link href="../../assets/css/style.css" rel="stylesheet"/>
+        <!-- Favicon -->
+        <!--<link rel="icon" type="image/png" sizes="32x32" href="favicon.ico"/>-->
+        <link rel="icon" type="image/png" sizes="32x32" href="http://slidesigma.com/themes/html/costic/favicon.ico"/>
+    </h:head>
+    <script type="text/javascript">
+        var b1=document.getElementById("b1");
+        b1.setAttribute("disabled","true");
+    </script>
+    <h:body class="ms-body ms-aside-left-open ms-primary-theme ms-dark-theme">
+    <f:metadata>
+        <f:viewAction action="#{mybean.sessionCheck()}"/>
+    </f:metadata> 
+     <div id="myModalProfile" class="modal fade" role="dialog">            
+  <div class="modal-dialog">
+<!-- Modal content-->
+    <div class="modal-content">
+        <h:form enctype="multipart/form-data">
+            
+        <div class="modal-header" style="margin-top:-22px;">
+        <div class="ms-panel-header">
+              <h6>Edit Profile</h6>
+            </div>
+      </div>
+      <div class="modal-body">
+<!--        <p>Are You Sure Want to Delete?</p>-->
+        <div class="" role="alert">
+            <div class="ms-content-wrapper">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="ms-panel">
+            
+              <div class="ms-panel-body" style="margin-top: -61px;margin-bottom: -109px;">
+              
+                <div class="form-group">
+                  <label for="exampleEmail">Enter name:-</label>
+                  <h:inputText id="pnsame" class="form-control" value="${roleBean.name}" readonly="true"/>
+                </div>
+                <div class="form-group">
+                  <label for="examplePassword">Enter Restaurants Name:-</label>
+                  <h:inputText id="pnqsame" class="form-control" value="${roleBean.restaurantName}" />
+                </div>
+                <div class="form-group">
+                  <label for="examplePassword">Image:-</label>
+                  <h:inputFile id="image" class="form-control" value="${roleBean.uploadedFile}"/>
+                  <h:graphicImage url="https://localhost:8181/JWT/slidesigma.com/themes/html/costic/pages/Image/${roleBean.image}" width="30px" height="30px"/>
+                </div>
+                <div class="form-group">
+                  <label for="examplePassword">City:-</label>
+                  <h:selectOneMenu class="custom-select pull-right form-control form-control-lg" id="cbk" value="${roleBean.city}" style="height: 51px !important;">
+                        <x:selectItem itemValue="Surat" itemLabel="Surat" />
+                        <x:selectItem itemValue="Navsari" itemLabel="Navsari" />
+                        <x:selectItem itemValue="Rajkot" itemLabel="Rajkot" />
+                        <x:selectItem itemValue="Ahemdabad" itemLabel="Ahemdabad" />
+                        <x:selectItem itemValue="Bharuch" itemLabel="Bharuch" />
+                  </h:selectOneMenu>
+                </div>
+                  <div class="form-group">
+                  <label for="examplePassword">Mobile No:-</label>
+                  <h:inputText id="pnsamswwe" class="form-control" value="${roleBean.mobileNo}" />
+                </div>
+                  <div class="form-group">
+                  <label for="examplePassword">Email ID:-</label>
+                  <h:inputText id="pnsdsame" class="form-control" value="${roleBean.emailID}" />
+                </div>
+                  <div class="form-group">
+                  <label for="examplePassword">Address:-</label>
+                  <h:inputText id="pnsdxame" class="form-control" value="${roleBean.adress}" />
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+              </div>
+      </div>
+        <div class="modal-footer" style="margin-bottom: -6px;">
+          <button type="button" class="btn btn-danger"  data-dismiss="modal">close</button>
+          <h:commandLink action='#{roleBean.submit1()}' value="Update" class="btn btn-danger" ></h:commandLink>
+      </div>
+        </h:form>
+    </div>
+
+  </div>
+</div>
+        
+        
+          <div id="preloader-wrap">
+    <div class="spinner spinner-8">
+      <div class="ms-circle1 ms-child"></div>
+      <div class="ms-circle2 ms-child"></div>
+      <div class="ms-circle3 ms-child"></div>
+      <div class="ms-circle4 ms-child"></div>
+      <div class="ms-circle5 ms-child"></div>
+      <div class="ms-circle6 ms-child"></div>
+      <div class="ms-circle7 ms-child"></div>
+      <div class="ms-circle8 ms-child"></div>
+      <div class="ms-circle9 ms-child"></div>
+      <div class="ms-circle10 ms-child"></div>
+      <div class="ms-circle11 ms-child"></div>
+      <div class="ms-circle12 ms-child"></div>
+    </div>
+  </div>
+  <!-- Overlays -->
+  <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+  <!-- Sidebar Navigation Left -->
+  <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+    <!-- Logo -->
+    <div class="logo-sn ms-d-block-lg">
+      <a class="pl-0 ml-0 text-center" href="index-2.html">
+        <img src="../../assets/img/costic/costic-logo-216x62.png" alt="logo"/>
+      </a>
+    </div>
+    <!-- Navigation -->
+    <ul class="accordion ms-main-aside fs-14" id="side-nav-accordion">
+      <!-- Dashboard -->
+      <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#dashboard" aria-expanded="false" aria-controls="dashboard"> <span><i class="material-icons fs-16">dashboard</i>Dashboard </span>
+        </a>
+        <ul id="dashboard" class="collapse" aria-labelledby="dashboard" data-parent="#side-nav-accordion">
+            <li> <a href="./Dashboard.jsf">Home</a>
+          </li>
+        </ul>
+      </li>
+      <!-- Popups -->
+      <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#popups" aria-expanded="false" aria-controls="popups"> <span><i class="material-icons fs-16">message</i>Product</span>
+        </a>
+        <ul id="popups" class="collapse" aria-labelledby="popups" data-parent="#side-nav-accordion">
+          <li> <a href="AddProduct.jsf">Add Product</a>
+          </li>
+          <li> <a href="ViewProduct.jsf">View Product</a>
+          </li>
+        </ul>
+      </li>
+      <!-- /Popups -->
+      <!-- Icons -->
+      <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#icons" aria-expanded="false" aria-controls="icons"> <span><i class="material-icons fs-16">border_color</i>Orders</span>
+        </a>
+        <ul id="icons" class="collapse" aria-labelledby="icons" data-parent="#side-nav-accordion">
+           
+            <li> <a href="./ViewOrders.jsf">View Orders</a>
+          </li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="#" class="has-chevron" data-toggle="collapse" data-target="#feed" aria-expanded="false" aria-controls="feed"> <span><i class="material-icons fs-16">border_color</i>FeedBack</span>
+        </a>
+        <ul id="feed" class="collapse" aria-labelledby="feed" data-parent="#side-nav-accordion">
+           
+            <li> <a href="./ViewFeedBack.jsf">View FeedBack</a>
+          </li>
+        </ul>
+    </li>      
+      <!-- /Apps -->
+    </ul>
+  </aside>
+  <!-- Sidebar Right -->
+  <aside id="ms-recent-activity" class="side-nav fixed ms-aside-right ms-scrollable">
+    <div class="ms-aside-header">
+      <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-3" role="tablist">
+        <li role="presentation" class="fs-12"><a href="#activityLog" aria-controls="activityLog" class="active" role="tab" data-toggle="tab"> Activity Log</a>
+        </li>
+        <li>
+          <button type="button" class="close ms-toggler text-center" data-target="#ms-recent-activity" data-toggle="slideRight"><span aria-hidden="true">&times;</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="ms-aside-body">
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active fade show" id="activityLog">
+          <ul class="ms-activity-log">
+            <li>
+              <div class="ms-btn-icon btn-pill icon btn-light"> <i class="flaticon-gear"></i>
+              </div>
+              <h6>Update 1.0.0 Pushed</h6>
+              <span> <i class="material-icons">event</i>1 January, 2019</span>
+              <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+            </li>
+            <li>
+              <div class="ms-btn-icon btn-pill icon btn-success"> <i class="flaticon-tick-inside-circle"></i>
+              </div>
+              <h6>Profile Updated</h6>
+              <span> <i class="material-icons">event</i>4 March, 2018</span>
+              <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+            </li>
+            <li>
+              <div class="ms-btn-icon btn-pill icon btn-warning"> <i class="flaticon-alert-1"></i>
+              </div>
+              <h6>Your payment is due</h6>
+              <span> <i class="material-icons">event</i>1 January, 2019</span>
+              <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+            </li>
+            <li>
+              <div class="ms-btn-icon btn-pill icon btn-danger"> <i class="flaticon-alert"></i>
+              </div>
+              <h6>Database Error</h6>
+              <span> <i class="material-icons">event</i>4 March, 2018</span>
+              <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+            </li>
+            <li>
+              <div class="ms-btn-icon btn-pill icon btn-info"> <i class="flaticon-information"></i>
+              </div>
+              <h6>Checkout what's Trending</h6>
+              <span> <i class="material-icons">event</i>1 January, 2019</span>
+              <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
+            </li>
+            <li>
+              <div class="ms-btn-icon btn-pill icon btn-secondary"> <i class="flaticon-diamond"></i>
+              </div>
+              <h6>Your Dashboard is ready</h6>
+              <span> <i class="material-icons">event</i>4 March, 2018</span>
+              <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
+            </li>
+          </ul> <a href="#" class="btn btn-primary d-block"> View All </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <!-- Main Content -->
+  <main class="body-content">
+    <!-- Navigation Bar -->
+    <nav class="navbar ms-navbar">
+      <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft"> <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+      </div>
+      <div class="logo-sn logo-sm ms-d-block-sm">
+        <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="index-2.html"><img src="../../assets/img/costic/costic-logo-84x41.png" alt="logo"/> </a>
+      </div>
+      <ul class="ms-nav-list ms-inline mb-0" id="ms-nav-options">
+          
+          <li class="ms-nav-item dropdown"> <a href="#" aria-haspopup="true" aria-expanded="false">
+               
+                <h:form>
+                    <h:commandLink class="ms-btn-icon btn-pill btn-danger" value="off" action="#{userManagedBean.activeStatus()}" rendered="#{userManagedBean.on eq 0}"></h:commandLink>
+                    <h:commandLink class="ms-btn-icon btn-pill btn-success" value="on" action="#{userManagedBean.deActiveStatus()}" rendered="#{userManagedBean.on eq 1}"></h:commandLink>
+                </h:form>
+            </a>
+        </li>
+        <li class="ms-nav-item ms-nav-user dropdown">
+          <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="ms-user-img ms-img-round float-right" src="../../assets/img/costic/customer-6.jpg" alt="people"/>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
+            <li class="dropdown-menu-header">
+              <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome, Anny Farisha</span></h6>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="ms-dropdown-list">
+              <a class=""><button type="button" data-toggle="modal" data-target="#myModalProfile" class="media fs-14 p-2" style="margin-top: 0px;background-color:#252851;color:white;border-color: #252851;"><i class="flaticon-user mr-2"></i>Profile</button></a>
+              <a class="media fs-14 p-2" href="pages/apps/email.html"> <span><i class="flaticon-mail mr-2"></i> Inbox</span> <span class="badge badge-pill badge-info">3</span>
+              </a>
+              <a class="media fs-14 p-2" href="pages/prebuilt-pages/user-profile.html"> <span><i class="flaticon-gear mr-2"></i> Account Settings</span>
+              </a>
+            </li>
+            <li class="dropdown-divider"></li>
+            <li class="dropdown-menu-footer">
+              <a class="media fs-14 p-2" href="pages/prebuilt-pages/lock-screen.html"> <span><i class="flaticon-security mr-2"></i> Lock</span>
+              </a>
+            </li>
+            <li class="dropdown-menu-footer">
+                <h:form><h:commandLink class="media fs-14 p-2" style="margin-left: 36px;" value="Log Out" action="#{mybean.logOutsd()}" actionListener="#{userManagedBean.deActiveStatus()}"><span><i class="flaticon-shut-down mr-2"></i></span></h:commandLink></h:form>
+            </li>
+
+          </ul>
+        </li>
+      </ul>
+      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options"> <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+      </div>
+    </nav>
+    <div class="ms-content-wrapper">
+            <div class="ms-content-wrapper">
+      <div class="row">
+
+        <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb pl-0">
+              <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i> Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Product</a></li>
+              <li class="breadcrumb-item active">View Product</li>
+            </ol>
+          </nav>
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Product List</h6>
+            </div>
+            <div class="ms-panel-body">
+               <h:form>  
+
+                <h:dataTable binding="#{table}" value="${myCartOrdersManagedBean.productVendorList}" var="prod" id="example" class="table table-striped table-bordered table-responsive" style="width:100%">
+                    <h:column>
+                        <c:facet name="header">Index</c:facet>
+                        <h:outputText value="${table.rowIndex+1}"></h:outputText>
+                    </h:column>                    
+                    <h:column>
+                        <c:facet name="header">Category</c:facet>
+                        <h:outputText value="${prod.productID.categoryID.categoryName}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Product Name</c:facet>
+                        <h:outputText value="${prod.productID.productName}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Qty</c:facet>
+                        <h:outputText value="${prod.qty}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Image</c:facet>
+                        <h:graphicImage url="https://localhost:8181/JWT/slidesigma.com/themes/html/costic/pages/Image/${prod.productID.image}" width="30px" height="30px"/>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Price</c:facet>
+                        <h:outputText value="${prod.price}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Order Date</c:facet>
+                        <h:outputText value="${prod.cartID.cart_Date}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Order Time</c:facet>
+                        <h:outputText value="${prod.cartID.cart_Time}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Dealer</c:facet>
+                        <h:selectOneMenu class="form-control" id="cbk2" value="${myCartOrdersManagedBean.dealerID}" rendered="#{prod.orderStatus eq 1}" disabled="true">
+                            <c:selectItems id="CategoryID1" value="#{userManagedBean.allDealers}" var="cm" itemValue="#{cm.userID}" itemLabel="#{cm.userName}" />
+                        </h:selectOneMenu>
+                        <h:selectOneMenu class="form-control" id="cbk" value="${myCartOrdersManagedBean.dealerID}" rendered="#{prod.orderStatus eq 4}" disabled="false">
+                            <c:selectItems id="CategoryID" value="#{userManagedBean.allDealers}" var="cm" itemValue="#{cm.userID}" itemLabel="#{cm.userName}" />
+                        </h:selectOneMenu>
+                         
+                    </h:column>
+                    <h:column>
+                        <c:facet name="header">Order Now</c:facet>
+                        <h:commandLink action='#{myCartOrdersManagedBean.orderNowDealer(prod.cartOrderID)}' value="Pending" rendered="#{prod.orderStatus eq 4}" class="btn btn-pill btn-gradient-primary" style="margin-top:1px;"> </h:commandLink>
+                        <h:commandLink action='#{myCartOrdersManagedBean.deleteMycartOrder(24)}' value="Done" disabled="true" rendered="#{prod.orderStatus eq 1}" class="btn btn-pill btn-gradient-success" style="margin-top:1px;"> </h:commandLink>
+                          
+                    </h:column>
+                     
+                </h:dataTable>
+                
+                </h:form> 
+           
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    </div>
+  </main>
+  
+  <!-- Global Required Scripts Start -->
+  <script src="../../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/js/popper.min.js"></script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/perfect-scrollbar.js">
+  </script>
+  <script src="../../assets/js/jquery-ui.min.js">
+  </script>
+  <script src="../../assets/js/Chart.bundle.min.js">
+  </script>
+  <script src="../../assets/js/widgets.js"> </script>
+  <script src="../../assets/js/clients.js"> </script>
+  <script src="../../assets/js/Chart.Financial.js"> </script>
+  <script src="../../assets/js/d3.v3.min.js">
+  </script>
+  <script src="../../assets/js/topojson.v1.min.js">
+  </script>
+  <script src="../../assets/js/datatables.min.js">
+  </script>
+  <script src="../../assets/js/data-tables.js">
+  </script>
+  <!-- Page Specific Scripts Finish -->
+  <!-- Costic core JavaScript -->
+  <script src="../../assets/js/framework.js"></script>
+  <!-- Settings -->
+  <script src="../../assets/js/settings.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script>
+    </h:body>
+
+</html>

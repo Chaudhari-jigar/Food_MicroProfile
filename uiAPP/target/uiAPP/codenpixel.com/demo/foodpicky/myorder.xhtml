@@ -1,0 +1,583 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ab="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="#"/>
+        <title>My Cart Order</title>
+        <!-- Bootstrap core CSS -->
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/track.css" rel="stylesheet"/>
+        <link href="css/rate.css" rel="stylesheet" type="text/css"/>
+        <link href="css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="css/animsition.min.css" rel="stylesheet"/>
+        <link href="css/animate.css" rel="stylesheet"/>
+        <!-- Custom styles for this template -->
+        <link href="css/style.css" rel="stylesheet"/> 
+        <link href="css/css/wizard.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+    <f:metadata>
+        <f:viewAction action="#{mybean.sessionCheck()}"/>
+    </f:metadata> 
+
+        <div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+        <!--header starts-->
+        <!--header starts-->
+        <header class="top-header navbar-fixed-top">
+            <!-- .navbar -->
+            <nav class="navbar navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
+                    <a class="navbar-brand" href="index.html"> <img class="img-rounded" src="images/food-picky-logo.png" alt=""/> </a>
+                    <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item"> <a class="nav-link active" href="index.jsf">Home <span class="sr-only">(current)</span></a> </li>
+                            
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Restaurants</a>
+                                <div class="dropdown-menu"> <a class="dropdown-item" href="ViewRestaurants.jsf">All Restaurants</a> <a class="dropdown-item" href="index.jsf">Chosen City</a></div>
+                            </li>
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Food</a>
+                                <div class="dropdown-menu"> 
+                                    <h:form>
+                                        <ul>
+                                        <c:forEach var="cat" items="#{categoryManageBean.categoryList}">
+                                            <li><h:commandButton class="dropdown-item" value="#{cat.categoryName}" action="#{productManagedBean.viewCatProduct1(cat.categoryID)}" /></li>
+                                        </c:forEach>
+                                        </ul>
+                                    </h:form>                                    
+                                </div>                                
+                            </li>
+<!--                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                <div class="dropdown-menu"> <a class="dropdown-item" href="pricing.html">Pricing</a> <a class="dropdown-item" href="contact.html">Contact</a> <a class="dropdown-item" href="submition.html">Submit restaurant</a> <a class="dropdown-item" href="registration.html">Registration</a>
+                                    <div class="dropdown-divider"></div> <a class="dropdown-item" href="checkout.html">Checkout</a> </div>
+                            </li>-->
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile</a>
+                                <div class="dropdown-menu"><h:form><h:commandLink class="dropdown-item" action="#{userManagedBean.updateMyUser()}">Edit Profile</h:commandLink></h:form><a class="dropdown-item" href="index.jsf">View Tracking</a><a class="dropdown-item" href="myorder.jsf">My Order</a><a class="dropdown-item" href="index.jsf" data-toggle="modal" data-target="#order-modal">Change Password</a><a class="dropdown-item" href="./LogOut.jsf">Logout</a> </div>
+                            </li>
+                            <li class="nav-item" style="height: 36px!important;margin-top:-8px;"> <a class="nav-link active" href="./profile.jsf"><img src="./images/add-shopping-cart.png" style="height:50px;width:50px;     "/></a> </li>
+                            <!--<li class="nav-item"> <a class="nav-link" href="./LogOut.jsf">Logout <span class="sr-only">(current)</span></a> </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- /.navbar -->
+        </header>
+        <!-- PAGE CONTETNT -->
+       <div class="breadcrumb">
+            <div class="container">
+               <ul>
+                  <li><a href="#" class="active">Home</a></li>
+                  <li><a href="#">Search results</a></li>
+                  <li>Profile</li>
+               </ul>
+            </div>
+        </div>
+        <div class="container m-t-30">
+               <div class="row">
+                   <div class="col-md-10">
+                     <div class="menu-widget m-b-30">
+                        <div class="widget-heading">
+                           <h3 class="widget-title text-dark">
+                              My Pennding ORDERS food! <a class="btn btn-link pull-right" data-toggle="collapse" href="#popular" aria-expanded="true">
+                              <i class="fa fa-angle-right pull-right"></i>
+                              <i class="fa fa-angle-down pull-right"></i>
+                              </a>
+                           </h3>
+                           <div class="clearfix"></div>
+                        </div>
+                        <div class="collapse in" id="1">
+                           <c:forEach var="cus" varStatus="statuss" items="#{deliveryBoyManagedBean.allNotCompleteList}">
+                               <!--<c:if test="">-->
+                            <div class="food-item white">                                
+                            
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="rest-logo pull-left">
+                                        <a class="restaurant-logo pull-left" href="#"><img src="https://localhost:8181/JWT/slidesigma.com/themes/html/costic/pages/Image/${cus.cartOrderID.productID.image}" alt="Food logo"/></a>
+                                    </div>
+                                    <!-- end:Logo -->
+                                    <a data-parent="#accordion" data-toggle="collapse" class="panel-toggle" href="#fa#{statuss.index + 1 }">
+                                    <div class="rest-descr">
+                                        
+                                        <h6>${cus.cartOrderID.productID.productName}<h:form><h:commandLink action="${feedBackManagedBean.asd(cus.cartOrderID.productID.productID)}"></h:commandLink></h:form></h6>
+                                        <p> ${cus.cartOrderID.productID.categoryID.categoryName}</p>
+                                    </div>
+                                    </a>
+                                </div>   
+                                <div class="col-sm-4">  
+                                    <div class="col-xs-12 col-sm-12 col-lg-4 pull-right item-cart-info"> <span class="price pull-left">Rs. ${cus.cartOrderID.productID.price} /-</span>  </div>
+                                </div>
+                                  
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="panel-collapse collapse" id="fa#{statuss.index + 1 }">
+                                            <div class="panel-body">
+                                            <div class="widget-heading">
+                                                <hr></hr>
+                                                <h3 class="widget-title text-dark">
+                                                    Product Tracking
+                                                </h3>
+                                                <div class="clearfix"></div>
+                                            </div>   
+                                            <p>
+                                                
+<!--                                                    <h:outputLabel class="progtrckr-done" value="Order Confirm"/>
+                                                    <h:outputLabel class="progtrckr-done" value="Dispatched"/>
+                                                    <h:outputLabel class="progtrckr-done" value="Out for Delivery"/>
+                                                    <h:outputLabel class="progtrckr-done" value="Order Completed"/>-->
+                                                    
+                                                    <h:outputLabel rendered="#{cus.dealerStatusID.deliveryStatusID eq 1}">
+                                                        <ol class="progtrckr" data-progtrckr-steps="4">
+                                                        <li class="progtrckr-done">Order Confirm</li>
+                                                        <li class="progtrckr-done">Dispatched</li>
+                                                        <li class="progtrckr-todo">Out for Delivery</li>
+                                                        <li class="progtrckr-todo">Order Completed</li>
+                                                        </ol>
+                                                    </h:outputLabel>
+                                                    <h:outputLabel rendered="#{cus.dealerStatusID.deliveryStatusID eq 2}">
+                                                        <ol class="progtrckr" data-progtrckr-steps="4">
+                                                        <li class="progtrckr-done">Order Confirm</li>
+                                                        <li class="progtrckr-done">Dispatched</li>
+                                                        <li class="progtrckr-done">Out for Delivery</li>
+                                                        <li class="progtrckr-todo">Order Completed</li>
+                                                        </ol>
+                                                    </h:outputLabel>
+                                                    <h:outputLabel rendered="#{cus.dealerStatusID.deliveryStatusID eq 3}">
+                                                        <ol class="progtrckr" data-progtrckr-steps="4">
+                                                        <li class="progtrckr-done">Order Confirm</li>
+                                                        <li class="progtrckr-done">Dispatched</li>
+                                                        <li class="progtrckr-done">Out for Delivery</li>
+                                                        <li class="progtrckr-done">Order Completed</li>
+                                                        </ol>
+                                                    </h:outputLabel>
+                                                <!--</ol>-->
+                                            </p>
+                                            <div class="row">
+                                                          <div class="col-sm-12">
+                                                              <div class="widget-heading">
+                                                                  <hr></hr>
+                                                                  <h3 class="widget-title text-dark">
+                                                                      Delivery Boy And Restaurant Details
+                                                                  </h3>
+                                                                  <div class="clearfix"></div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="panel">
+                                                      <div class="panel-heading">
+                                                          <h4 class="panel-title"><a class="panel-toggle collapsed" href="#" aria-expanded="false"><i class="ti-info-alt" aria-hidden="true"></i>
+                                                                  <ul>
+                                                                      <span style="text-align: left">
+                                                                          <li>Delivery Boy Name :- #{cus.dealerID.userName}</li>
+                                                                          <li>Delivery Boy MobileNo :- #{cus.dealerID.mobileNo}</li>
+                                                                      </span>
+                                                                      <span style="text-align: right">
+                                                                          <li>Restaurant Name :- #{cus.cartOrderID.vendorID.restaurantName}</li>
+                                                                          <li>Restaurant Address :- #{cus.cartOrderID.vendorID.address}</li>
+                                                                      </span>    
+                                                                  </ul>
+
+                                                              </a><span></span></h4> </div>
+                                                      </div>      
+                                                <!--<h1>Hello 0 </h1>-->
+                                            
+
+                                                <ui:repeat var="feew" value="#{feedBackManagedBean.getFeedbackUserList1(cus.cartOrderID.productID.productID)}" varStatus="row" >
+                                                    
+                                                <h:panelGroup rendered="#{not empty feedBackManagedBean.getFeedbackUserList1(cus.cartOrderID.productID.productID)}">
+                                                 
+                                                  
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Review OF Product
+                                                            </h3>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="panel-toggle collapsed" href="#" aria-expanded="false"><i class="ti-info-alt" aria-hidden="true"></i>
+                                                    #{feew.feedback}</a><span><h:form><h:commandButton class="close" value="×" style="border: 0; -webkit-appearance: none; right: -15px; top: -15px; background-color: #f30; opacity: 1; width: 30px; height: 24px; color: #fff; text-shadow: none; font-size: 14px; display: block;" action="#{feedBackManagedBean.deleteFeedback(feew.feedbackID)}"></h:commandButton></h:form> </span></h4> </div>
+                                                </div>
+                                                   
+                                                </h:panelGroup>
+                                                
+                                            </ui:repeat>
+                                            
+                                                <h:panelGroup rendered="#{empty feedBackManagedBean.getFeedbackUserList1(cus.cartOrderID.productID.productID)}">
+                                                    <!--<div >-->
+                                                 <h:form>   
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Rate This Product
+                                                            </h3>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">    
+                                                    <div class="col-sm-12">
+                                                        <div id="wrapper" style="margin-left: 15px">
+
+                                                            <p:rating value="#{feedBackManagedBean.rate}" stars="5"/>
+
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Review This Product
+                                                            </h3>
+
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="row">    
+                                                    <div class="col-sm-12">
+                                                            <h:inputTextarea ab:placeholder="Enter Review" class="form-control" value="${feedBackManagedBean.feedback}" rows="8" required="true" requiredMessage="Please Required Name !!"></h:inputTextarea>
+                                                        <br></br>
+                                                        <h:commandButton class="btn theme-btn" value="Submit" action="${feedBackManagedBean.submitFeedBack(cus.cartOrderID.productID.productID)}"/>
+                                                    </div>  
+                                                </div>   
+                                            </h:form>    
+                                            </h:panelGroup>
+                                                
+                                            <!--</ui:repeat>-->                                           
+                                                <!--</div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                        
+                                    <!-- end:Description -->
+                                 <!--1 1 2 3-->
+                                 <!-- end:col -->
+                                 
+                              </div>
+                              <!-- end:row -->
+                           </div>
+                           
+                             
+                           </c:forEach>     
+                           <!-- end:Food item -->
+                           
+                        </div>
+                        <!-- end:Collapse -->
+                     </div>
+                     <!-- end:Widget menu -->
+                     <!-- end:Widget menu -->
+                     
+                     <!--/row -->
+                  </div>
+                  <div class="col-md-10">
+                     <div class="menu-widget m-b-30">
+                        <div class="widget-heading">
+                           <h3 class="widget-title text-dark">
+                              My Delicious ORDERS foods! <a class="btn btn-link pull-right" data-toggle="collapse" href="#popular" aria-expanded="true">
+                              <i class="fa fa-angle-right pull-right"></i>
+                              <i class="fa fa-angle-down pull-right"></i>
+                              </a>
+                           </h3>
+                           <div class="clearfix"></div>
+                        </div>
+                        <div class="collapse in" id="1">
+                           <!--<c:set var="i" value="0" scope="request"/>-->
+                           <c:forEach var="cus1" varStatus="statuss1" items="#{deliveryBoyManagedBean.allCustomerList}">
+                            <!--<h:panelGroup>-->
+                            <div class="food-item white">                                
+                              <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="rest-logo pull-left">
+                                        <a class="restaurant-logo pull-left" href="#"><img src="https://localhost:8181/JWT/slidesigma.com/themes/html/costic/pages/Image/${cus1.cartOrderID.productID.image}" alt="Food logo"/></a>
+                                    </div>
+                                    <!-- end:Logo -->
+                                    <a data-parent="#accordion" data-toggle="collapse" class="panel-toggle" href="#fn#{statuss1.index + 1 }">
+                                    <div class="rest-descr">
+                                        <h6>${cus1.cartOrderID.productID.productName}<h:form><h:commandLink action="${feedBackManagedBean.asd(cus1.cartOrderID.productID.productID)}">
+                                                </h:commandLink></h:form></h6>
+                                        <p> ${cus1.cartOrderID.productID.categoryID.categoryName}</p>
+                                    </div>
+                                    </a>
+                                </div>   
+                                <div class="col-sm-4">  
+                                    <div class="col-xs-12 col-sm-12 col-lg-4 pull-right item-cart-info"> <span class="price pull-left">Rs. ${cus1.cartOrderID.productID.price} /-</span>  </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="panel-collapse collapse" id="fn#{statuss1.index + 1 }">
+                                            <div class="panel-body">
+                                            <div class="widget-heading">
+                                                <hr></hr>
+                                                <h3 class="widget-title text-dark">
+                                                    Product Tracking
+                                                </h3>
+                                                <div class="clearfix"></div>
+                                            </div>   
+                                            <p>
+                                                
+<!--                                                    <h:outputLabel class="progtrckr-done" value="Order Confirm"/>
+                                                    <h:outputLabel class="progtrckr-done" value="Dispatched"/>
+                                                    <h:outputLabel class="progtrckr-done" value="Out for Delivery"/>
+                                                    <h:outputLabel class="progtrckr-done" value="Order Completed"/>-->
+                                                    
+                                                    <h:outputLabel rendered="#{cus1.dealerStatusID.deliveryStatusID eq 1}">
+                                                        <ol class="progtrckr" data-progtrckr-steps="4">
+                                                        <li class="progtrckr-done">Order Confirm</li>
+                                                        <li class="progtrckr-done">Dispatched</li>
+                                                        <li class="progtrckr-todo">Out for Delivery</li>
+                                                        <li class="progtrckr-todo">Order Completed</li>
+                                                        </ol>
+                                                    </h:outputLabel>
+                                                    <h:outputLabel rendered="#{cus1.dealerStatusID.deliveryStatusID eq 2}">
+                                                        <ol class="progtrckr" data-progtrckr-steps="4">
+                                                        <li class="progtrckr-done">Order Confirm</li>
+                                                        <li class="progtrckr-done">Dispatched</li>
+                                                        <li class="progtrckr-done">Out for Delivery</li>
+                                                        <li class="progtrckr-todo">Order Completed</li>
+                                                        </ol>
+                                                    </h:outputLabel>
+                                                    <h:outputLabel rendered="#{cus1.dealerStatusID.deliveryStatusID eq 3}">
+                                                        <ol class="progtrckr" data-progtrckr-steps="4">
+                                                        <li class="progtrckr-done">Order Confirm</li>
+                                                        <li class="progtrckr-done">Dispatched</li>
+                                                        <li class="progtrckr-done">Out for Delivery</li>
+                                                        <li class="progtrckr-done">Order Completed</li>
+                                                        </ol>
+                                                    </h:outputLabel>
+                                                <!--</ol>-->
+                                            </p>
+                                            <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Delivery Boy And Restaurant Details
+                                                            </h3>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="panel-toggle collapsed" href="#" aria-expanded="false"><i class="ti-info-alt" aria-hidden="true"></i>
+                                                            <ul>
+                                                                <span style="text-align: left">
+                                                                    <li>Delivery Boy Name :- #{cus1.dealerID.userName}</li>
+                                                                    <li>Delivery Boy MobileNo :- #{cus1.dealerID.mobileNo}</li>
+                                                                </span>
+                                                                <span style="text-align: right">
+                                                                    <li>Restaurant Name :- #{cus1.cartOrderID.vendorID.restaurantName}</li>
+                                                                    <li>Restaurant Address :- #{cus1.cartOrderID.vendorID.address}</li>
+                                                                </span>    
+                                                            </ul>
+                                                            
+                                                        </a><span></span></h4> </div>
+                                                </div>     
+                                                <!--<h1>Hello 0 </h1>-->
+                                            
+
+                                                <ui:repeat var="feew1" value="#{feedBackManagedBean.getFeedbackUserList1(cus1.cartOrderID.productID.productID)}" varStatus="row1">
+                                                       
+                                                <h:panelGroup rendered="#{not empty feedBackManagedBean.getFeedbackUserList1(cus1.cartOrderID.productID.productID)}">
+                                                 
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Review OF Product
+                                                            </h3>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a class="panel-toggle collapsed" href="#" aria-expanded="false"><i class="ti-info-alt" aria-hidden="true"></i>
+                                                    #{feew1.feedback}</a><span><h:form><h:commandButton class="close" value="×" style="border: 0; -webkit-appearance: none; right: -15px; top: -15px; background-color: #f30; opacity: 1; width: 30px; height: 24px; color: #fff; text-shadow: none; font-size: 14px; display: block;" action="#{feedBackManagedBean.deleteFeedback(feew1.feedbackID)}"></h:commandButton></h:form> </span></h4> </div>
+                                                </div>
+                                                   
+                                                </h:panelGroup>
+                                                
+                                            </ui:repeat>
+                                            
+                                                <h:panelGroup rendered="#{empty feedBackManagedBean.getFeedbackUserList1(cus1.cartOrderID.productID.productID)}">
+                                                    <!--<div >-->
+                                                    <h:form id="form#{statuss1.index + 1 }">   
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Rate This Product
+                                                            </h3>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">    
+                                                    <div class="col-sm-12">
+                                                        <div id="wrapper" style="margin-left: 15px">
+
+                                                            <p:rating id="rate" value="#{feedBackManagedBean.rate}" stars="5"/>
+
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="widget-heading">
+                                                            <hr></hr>
+                                                            <h3 class="widget-title text-dark">
+                                                                Review This Product
+                                                            </h3>
+
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                <div class="row">    
+                                                    <div class="col-sm-12">
+                                                            <h:inputTextarea id="feedback" ab:placeholder="Enter Review" class="form-control" value="${feedBackManagedBean.feedback}" rows="8"/>
+                                                        <br></br>
+                                                        <h:commandButton class="btn theme-btn" value="Submit" action="${feedBackManagedBean.submitFeedBack(cus1.cartOrderID.productID.productID)}"/>
+                                                    </div>  
+                                                </div>   
+                                            </h:form>    
+                                            </h:panelGroup>
+                                                
+                                            <!--</ui:repeat>-->                                           
+                                                <!--</div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                           </div>
+                            
+                             
+                            </c:forEach> 
+                        </div>
+                        <!-- end:Collapse -->
+                     </div>
+                     <!-- end:Widget menu -->
+                     <!-- end:Widget menu -->
+                     <div class="row m-t-30">
+                        <div class="col-sm-12 col-xs-12">
+                           <div class="panel">
+                              <div class="panel-heading">
+                                 <h4 class="panel-title"><a data-parent="#accordion" data-toggle="collapse" class="panel-toggle collapsed" href="#faq1" aria-expanded="false">Can I viverra sit amet quam eget lacinia?</a></h4>
+                              </div>
+                              <div class="panel-collapse collapse" id="faq1" aria-expanded="false" role="article" style="height: 0px;">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ut erat a ultricies. Phasellus non auctor nisi, id aliquet lectus. Vestibulum libero eros, aliquet at tempus ut, scelerisque sit amet nunc. Vivamus id porta neque, in pulvinar ipsum. Vestibulum sit amet quam sem. Pellentesque accumsan consequat venenatis. Pellentesque sit amet justo dictum, interdum odio non, dictum nisi. Fusce sit amet turpis eget nibh elementum sagittis. Nunc consequat lacinia purus, in consequat neque consequat id.</div>
+                              </div>
+                           </div>
+                           <!--//panel-->
+                           <div class="panel">
+                              <div class="panel-heading">
+                                 <h4 class="panel-title"><a data-parent="#accordion" data-toggle="collapse" class="panel-toggle" href="#faq2"><i class="ti-info-alt"></i>What is the ipsum dolor sit amet quam tortor?</a></h4>
+                              </div>
+                              <div class="panel-collapse collapse" id="faq2">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ut erat a ultricies. Phasellus non auctor nisi, id aliquet lectus. Vestibulum libero eros, aliquet at tempus ut, scelerisque sit amet nunc. Vivamus id porta neque, in pulvinar ipsum. Vestibulum sit amet quam sem. Pellentesque accumsan consequat venenatis. Pellentesque sit amet justo dictum, interdum odio non, dictum nisi. Fusce sit amet turpis eget nibh elementum sagittis. Nunc consequat lacinia purus, in consequat neque consequat id.</div>
+                              </div>
+                           </div>
+                           <!--//panel-->
+                           <div class="panel">
+                              <div class="panel-heading">
+                                 <h4 class="panel-title"><a data-parent="#accordion" data-toggle="collapse" class="panel-toggle" href="#faq3"><i class="ti-info-alt"></i>How does lorem ipsum work?</a></h4>
+                              </div>
+                              <div class="panel-collapse collapse" id="faq3">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ut erat a ultricies. Phasellus non auctor nisi, id aliquet lectus. Vestibulum libero eros, aliquet at tempus ut, scelerisque sit amet nunc. Vivamus id porta neque, in pulvinar ipsum. Vestibulum sit amet quam sem. Pellentesque accumsan consequat venenatis. Pellentesque sit amet justo dictum, interdum odio non, dictum nisi. Fusce sit amet turpis eget nibh elementum sagittis. Nunc consequat lacinia purus, in consequat neque consequat id.</div>
+                              </div>
+                           </div>
+                           <!--//panel-->
+                           <div class="panel">
+                              <div class="panel-heading">
+                                 <h4 class="panel-title"><a data-parent="#accordion" data-toggle="collapse" class="panel-toggle" href="#faq4"><i class="ti-info-alt"></i>Can I ipsum dolor sit amet nascetur ridiculus?</a></h4>
+                              </div>
+                              <div class="panel-collapse collapse" id="faq4">
+                                 <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam rutrum ut erat a ultricies. Phasellus non auctor nisi, id aliquet lectus. Vestibulum libero eros, aliquet at tempus ut, scelerisque sit amet nunc. Vivamus id porta neque, in pulvinar ipsum. Vestibulum sit amet quam sem. Pellentesque accumsan consequat venenatis. Pellentesque sit amet justo dictum, interdum odio non, dictum nisi. Fusce sit amet turpis eget nibh elementum sagittis. Nunc consequat lacinia purus, in consequat neque consequat id.</div>
+                              </div>
+                           </div>
+                           <!--//panel-->
+                        </div>
+                     </div>
+                     <!--/row -->
+                  </div>
+                  <!-- end:Bar -->
+                  
+                  <!-- end:Right Sidebar -->
+               </div>
+               <!-- end:row -->
+            </div>
+        <!-- PAGE CONTETNT END -->
+    </div>
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/animsition.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/headroom.js"></script>
+    <script src="js/foodpicky.js"></script>
+    <script src="js/markerclusterer.js"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js"></script>-->
+    <script src="js/jquery.googlemap.js"></script>
+    <script src="js/data.json"></script>
+    <script>
+        
+    $(':radio').change(function() {
+//      var vals1 = this.value;
+//      var vals2 = this.value;
+//      var vals3 = this.value;
+//      var vals4 = this.value;
+////      alert(vals1);
+//    document.getElementsByName("myform1:vals1").value = vals1;
+//    document.getElementsByName("myform2:vals2").value = vals2;
+//    document.getElementsByName("myform3:vals3").value = vals3;
+//      document.getElementsByName("myform4:vals4").value = vals4;
+//      alert(vals3);
+//      alert("1 = "+ document.getElementsByName("myform1:vals1").value);
+//      alert("2 = "+ document.getElementsByName("myform2:vals2").value);
+//      alert("3 = "+ document.getElementsByName("myform3:vals3").value);
+//      alert("4 = "+ document.getElementsByName("myform4:vals4").value);
+//      document.getElementById("myform4:vals1").value = this.value;
+//      alert("1 = "+v);
+    });
+//   function hideforms()
+//   {
+////       alert("hello");
+//       $("#forms1").hide();
+//   }
+    </script>
+    </h:body>
+</html>
+

@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:c="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Vendor Registration Form</title>
+  <!-- Iconic Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../vendors/iconic-fonts/flat-icons/flaticon.css"/>
+    <link href="../../vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet"/>
+  <!-- Bootstrap core CSS -->
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- jQuery UI -->
+  <link href="../../assets/css/jquery-ui.min.css" rel="stylesheet"/>
+  <!-- Costic styles -->
+  <link href="../../assets/css/style.css" rel="stylesheet"/>
+  <!-- Favicon -->
+  <!--<link rel="icon" type="image/png" sizes="32x32" href="../../favicon.ico"/>-->
+<link rel="icon" type="image/png" sizes="32x32" href="http://slidesigma.com/themes/html/costic/favicon.ico"/>
+
+    </h:head>
+    <h:body class="ms-body ms-primary-theme ms-logged-out  ms-primary-theme">
+        <!-- Preloader -->
+  <div id="preloader-wrap">
+    <div class="spinner spinner-8">
+      <div class="ms-circle1 ms-child"></div>
+      <div class="ms-circle2 ms-child"></div>
+      <div class="ms-circle3 ms-child"></div>
+      <div class="ms-circle4 ms-child"></div>
+      <div class="ms-circle5 ms-child"></div>
+      <div class="ms-circle6 ms-child"></div>
+      <div class="ms-circle7 ms-child"></div>
+      <div class="ms-circle8 ms-child"></div>
+      <div class="ms-circle9 ms-child"></div>
+      <div class="ms-circle10 ms-child"></div>
+      <div class="ms-circle11 ms-child"></div>
+      <div class="ms-circle12 ms-child"></div>
+    </div>
+  </div>
+         <!-- Overlays -->
+  <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+  <!-- Sidebar Navigation Left -->
+  <aside id="ms-side-nav" class="side-nav fixed ms-aside-scrollable ms-aside-left">
+
+    <!-- Logo -->
+    <div class="logo-sn ms-d-block-lg">
+      <a class="pl-0 ml-0 text-center" href="../../index-2.html"> <img src="../../assets/img/costic/costic-logo-216x62.png" alt="logo"/> </a>
+    </div>
+
+    <!-- Navigation -->
+    
+
+  </aside>
+
+  <!-- Main Content -->
+  <main class="body-content">
+
+    <!-- Navigation Bar -->
+  <nav class="navbar ms-navbar">
+      <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+        <span class="ms-toggler-bar bg-primary"></span>
+      </div>
+
+    </nav>
+
+    <!-- Body Content Wrapper -->
+    <div class="ms-content-wrapper ms-auth">
+
+      <div class="ms-auth-container">
+        
+        <div class="col-md-4 "> 
+        <div class="ms-auth-col">
+          <div class="ms-auth-bg"></div>
+        </div>
+        </div>
+        <div class="col-md-8 "> 
+          <div class="ms-auth-col">
+          <div class="ms-auth-form" style="margin-top: 130px;">
+            <h:form class="needs-validation"  enctype="multipart/form-data">
+              <h3>Vendor Registration Form</h3>
+              <p>Please read All Rules and condition !!</p>
+            <div class="form-row">
+                <div class="col-md-12">
+                  <label for="validationCustom01">Vendor name</label>
+                  <div class="input-group">
+                    <!--<input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="John" required=""/>-->
+                    <h:inputText id="uname" class="form-control" value="${userManagedBean.userName}" required="" />
+                    <div class="invalid-feedback"></div><span style="color: red;">*</span>
+                  </div>
+                  <h:message for="uname" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="col-md-12" style="margin-bottom: 0px;">
+                    <label for="validationCustom21">User Image</label>
+                    <div class="input-group">
+                        <!--<input type="file" class="custom-file-input" id="validatedCustomFile"/>-->
+                        <!--<h:inputText id="Image" class="form-control" value= />-->
+                        <h:inputFile id="imag" class="form-control" value="${userManagedBean.userPic}"/>
+                        <!--<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>-->
+                        <span style="color: red;">*</span>
+                        <div class="invalid-feedback"></div>
+                        
+                    </div>
+                    <h:message for="imag" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                  </div>
+                </div>
+            <div class="form-row">
+                <div class="col-md-12 ">
+                  <label for="validationCustom01">Restaurant Name</label>
+                  <div class="input-group">
+                    <!--<input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="John" required=""/>-->
+                    <h:inputText id="rname" class="form-control" value="${userManagedBean.restaurantName}"/>
+                    <div class="invalid-feedback">
+                      
+                    </div>
+                    <span style="color: red;">*</span>
+                  </div>
+                  <h:message for="rname" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 ">
+                  <label for="validationCustom01">City</label>
+                  <div class="input-group">
+                    <!--<input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="John" required=""/>-->
+                    <h:selectOneMenu class="form-control" id="cbk" value="${userManagedBean.city}">
+                        <c:selectItem itemValue="Surat" itemLabel="Surat" />
+                        <c:selectItem itemValue="Navsari" itemLabel="Navsari" />
+                        <c:selectItem itemValue="Rajkot" itemLabel="Rajkot" />
+                        <c:selectItem itemValue="Ahemdabad" itemLabel="Ahemdabad" />
+                        <c:selectItem itemValue="Bharuch" itemLabel="Bharuch" />
+                    </h:selectOneMenu>
+                    
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    
+                  </div>
+                </div>
+            </div>
+              <div class="form-row">
+                <div class="col-md-12 ">
+                  <label for="validationCustom02">Mobile No</label>
+                  <div class="input-group">
+                    <!--<input type="email" class="form-control" id="validationCustom03" placeholder="Email Address" required=""/>-->
+                    <h:inputText id="mobile" class="form-control" value="${userManagedBean.mobileNo}" required=""/>
+                    <span style="color: red;">*</span>
+                    <div class="invalid-feedback">
+                      
+                    </div>
+                  </div>
+                  <h:message for="mobile" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                </div>
+                <div class="col-md-12 ">
+                  <label for="validationCustom03">Email Id</label>
+                  <div class="input-group">
+                    <!--<input type="email" class="form-control" id="validationCustom03" placeholder="Email Address" required=""/>-->
+                    <h:inputText id="email" class="form-control" value="${userManagedBean.emailID}" required=""/>
+                    <span style="color: red;">*</span>
+                    <div class="invalid-feedback">
+                      
+                    </div>
+                  </div>
+                  <h:message for="email" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                </div>
+                <div class="col-md-12 ">
+                  <label for="validationCustom03">Address</label>
+                  <div class="input-group">
+                    <!--<input type="email" class="form-control" id="validationCustom03" placeholder="Email Address" required=""/>-->
+                    <h:inputText id="address" class="form-control" value="${userManagedBean.address}"/>
+                    <span style="color: red;">*</span>
+                    <div class="invalid-feedback">
+                      
+                    </div>
+                  </div>
+                  <h:message for="address" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                </div>
+                  <div class="col-md-12" style="margin-bottom: 0px;">
+                    <label for="validationCustom21">Image</label>
+                    <div class="input-group">
+                        <!--<input type="file" class="custom-file-input" id="validatedCustomFile"/>-->
+                        <!--<h:inputText id="Image" class="form-control" value= />-->
+                        <h:inputFile id="image" class="form-control" value="${userManagedBean.uploadedFile}"/>
+                        <!--<label class="custom-file-label" for="validatedCustomFile">Choose file...</label>-->
+                        <span style="color: red;">*</span>
+                        <div class="invalid-feedback">
+                            
+                        </div>
+                    </div>
+                    <h:message for="image" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                  </div>
+                <div class="col-md-12 ">
+                  <label for="validationCustom04">Password</label>
+                  <div class="input-group">
+                    <!--<input type="password" class="form-control" id="validationCustom04" placeholder="Password" required=""/>-->
+                    <h:inputSecret id="password" class="form-control" value="${userManagedBean.password}" required=""/>
+                    <span style="color: red;">*</span>
+                    <div class="invalid-feedback">
+                      
+                    </div>
+                  </div>
+                  <h:message for="password" style=" color: red;float: inline-end;margin-top: -18px;"/>
+                </div>
+                  
+              </div>
+              <div class="form-group">
+                <div class="form-check pl-0">
+                  <label class="ms-checkbox-wrap">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required=""/>
+                    <i class="ms-checkbox-check"></i>
+                  </label>
+                  <span> Agree to terms and conditions </span>
+                </div>
+              </div>
+              <!--<button class="btn btn-primary mt-4 d-block w-100" type="submit">Create Account</button>-->
+              <h:commandButton class="btn btn-primary mt-4 d-block w-100" value="Sign Up" action="${userManagedBean.submit()}" />
+              <p class="mb-0 mt-3 text-center">Already have an account? <a class="btn-link" href="https://localhost:8181/JWT/slidesigma.com/themes/html/costic/pages/LoginPage.jsf">Sign In</a> </p>
+            </h:form>
+
+          </div>
+        </div>
+        </div>    
+      </div>
+
+    </div>
+
+  </main>
+  
+  <!-- SCRIPTS -->
+  <!-- Global Required Scripts Start -->
+  <script src="../../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/js/popper.min.js"></script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/perfect-scrollbar.js"> </script>
+  <script src="../../assets/js/jquery-ui.min.js"> </script>
+  <!-- Global Required Scripts End -->
+
+  <!-- Costic core JavaScript -->
+  <script src="../../assets/js/framework.js"></script>
+
+  <!-- Settings -->
+  <script src="../../assets/js/settings.js"></script>
+
+
+    </h:body>
+</html>

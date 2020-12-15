@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:c="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dealer Registration</title>
+  <!-- Iconic Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="../../vendors/iconic-fonts/flat-icons/flaticon.css" />
+  <link href="../../vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet" />
+  <!-- Bootstrap core CSS -->
+  <link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- jQuery UI -->
+  <link href="../../assets/css/jquery-ui.min.css" rel="stylesheet"/> 
+  <!-- Costic styles -->
+  <link href="../../assets/css/style.css" rel="stylesheet"/>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="http://slidesigma.com/themes/html/costic/favicon.ico"/>
+</h:head>
+
+<body class="ms-body ms-primary-theme ms-logged-out">
+ 
+  <!-- Preloader -->
+  <div id="preloader-wrap">
+    <div class="spinner spinner-8">
+      <div class="ms-circle1 ms-child"></div>
+      <div class="ms-circle2 ms-child"></div>
+      <div class="ms-circle3 ms-child"></div>
+      <div class="ms-circle4 ms-child"></div>
+      <div class="ms-circle5 ms-child"></div>
+      <div class="ms-circle6 ms-child"></div>
+      <div class="ms-circle7 ms-child"></div>
+      <div class="ms-circle8 ms-child"></div>
+      <div class="ms-circle9 ms-child"></div>
+      <div class="ms-circle10 ms-child"></div>
+      <div class="ms-circle11 ms-child"></div>
+      <div class="ms-circle12 ms-child"></div>
+    </div>
+  </div>
+  <!-- Overlays -->
+  <div class="ms-aside-overlay ms-overlay-left ms-toggler" data-target="#ms-side-nav" data-toggle="slideLeft"></div>
+  <div class="ms-aside-overlay ms-overlay-right ms-toggler" data-target="#ms-recent-activity" data-toggle="slideRight"></div>
+  <!-- Sidebar Navigation Left -->
+  
+  <!-- Main Content -->
+  <main class="body-content">
+    <!-- Navigation Bar -->
+    <!-- Body Content Wrapper -->
+    <div class="ms-content-wrapper ms-auth">
+      <div class="ms-auth-container">
+        <div class="col-md-4 ">
+        <div class="ms-auth-col">
+        <div class="ms-auth-bg" style="height: 800px;"></div>
+        </div>
+        </div>
+        <div class="col-md-8">  
+        <div class="ms-auth-col">
+          <div class="ms-auth-form" style="margin-top: 30px;">
+            <h:form enctype="multipart/form-data">
+              <h3>Dealer Registration</h3>
+              <p>Before The Register Please Must be Read Rules and Conditions</p>
+              <div class="mb-3">
+                <label>Dealer Name</label>
+                <div class="input-group">
+                    <h:inputText class="form-control" id="dname" value="${userManagedBean.userName}"></h:inputText>
+                    <span style="color: red;">*</span>
+                </div>
+                <h:message for="dname" style=" color: red;float: inline-end;margin-top: -18px;"/>
+              </div>
+              <div class="mb-2">
+                <label>User Image</label>
+                <div class="input-group">
+                    <h:inputFile id="imag" class="form-control" value="${userManagedBean.userPic}"/>
+                    <span style="color: red;">*</span>
+                </div>
+                <h:message for="imag" style=" color: red;float: inline-end;margin-top: -18px;"/>
+              </div>
+              <div class="mb-2">
+                <label>Mobile Number</label>
+                <div class="input-group">
+                    <h:inputText id="mno" class="form-control" value="${userManagedBean.mobileNo}"></h:inputText>
+                    <span style="color: red;">*</span>
+                </div>
+                <h:message for="mno" style=" color: red;float: inline-end;margin-top: -18px;"/>
+              </div>
+              <div class="mb-2">
+                <label>Email ID</label>
+                <div class="input-group">
+                    <h:inputText id="emailid" class="form-control"  value="${userManagedBean.emailID}"></h:inputText>
+                    <span style="color: red;">*</span>
+                </div>
+                <h:message for="emailid" style=" color: red;float: inline-end;margin-top: -18px;"/>
+              </div>
+              <div class="mb-2">
+                
+                    <label>City</label>
+                  <div class="input-group">
+                    <!--<input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="John" required=""/>-->
+                    <h:selectOneMenu class="form-control" id="cbk" value="${userManagedBean.city}">
+                        <c:selectItem itemValue="Surat" itemLabel="Surat" />
+                        <c:selectItem itemValue="Navsari" itemLabel="Navsari" />
+                        <c:selectItem itemValue="Rajkot" itemLabel="Rajkot" />
+                        <c:selectItem itemValue="Ahemdabad" itemLabel="Ahemdabad" />
+                        <c:selectItem itemValue="Bharuch" itemLabel="Bharuch" />
+                    </h:selectOneMenu>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                
+            </div>
+              <div class="mb-2">
+                <label>Address</label>
+                <div class="input-group">
+                    <h:inputText id="add" class="form-control" value="${userManagedBean.address}"></h:inputText>
+                    <span style="color: red;">*</span>
+                </div>
+                <h:message for="add" style=" color: red;float: inline-end;margin-top: -18px;"/>
+              </div>
+              <div class="mb-2">
+                <label>Password</label>
+                <div class="input-group">
+                    <h:inputSecret id="password" class="form-control"  value="${userManagedBean.password}"></h:inputSecret>
+                    <span style="color: red;">*</span>
+                </div>
+                <h:message for="password" style=" color: red;float: inline-end;margin-top: -18px;"/>
+              </div>
+              <h:commandButton class="btn btn-primary mt-4 d-block w-100" value="Create Account" action="#{userManagedBean.dealersubmit()}"></h:commandButton> 
+              <p class="mb-0 mt-3 text-center">Don't have an account? <a class="btn-link" href="https://localhost:8181/JWT/slidesigma.com/themes/html/costic/pages/LoginPage.jsf">Sign In</a> 
+              </p>
+            </h:form>
+          </div>
+        </div>
+        </div>    
+      </div>
+    </div>
+    <!-- Forgot Password Modal -->
+    <div class="modal fade" id="modal-12" tabindex="-1" role="dialog" aria-labelledby="modal-12">
+      <div class="modal-dialog modal-dialog-centered modal-min" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+            </button> <i class="flaticon-secure-shield d-block"></i>
+            <h1>Forgot Password?</h1>
+            <p>Enter your email to recover your password</p>
+            <form method="post">
+              <div class="ms-form-group has-icon">
+                <input type="text" placeholder="Email Address" class="form-control" name="forgot-password" value="" /> <i class="material-icons">email</i>
+              </div>
+              <button type="submit" class="btn btn-primary shadow-none">Reset Password</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- SCRIPTS -->
+  <!-- Global Required Scripts Start -->
+  <script src="../../assets/js/jquery-3.3.1.min.js"></script>
+  <script src="../../assets/js/popper.min.js"></script>
+  <script src="../../assets/js/bootstrap.min.js"></script>
+  <script src="../../assets/js/perfect-scrollbar.js">
+  </script>
+  <script src="../../assets/js/jquery-ui.min.js">
+  </script>
+  <!-- Global Required Scripts End -->
+  <!-- Costic core JavaScript -->
+  <script src="../../assets/js/framework.js"></script>
+  <!-- Settings -->
+  <script src="../../assets/js/settings.js"></script>
+</body>
+
+
+<!-- Mirrored from slidesigma.com/themes/html/costic/pages/prebuilt-pages/default-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 May 2020 11:08:39 GMT -->
+</html>

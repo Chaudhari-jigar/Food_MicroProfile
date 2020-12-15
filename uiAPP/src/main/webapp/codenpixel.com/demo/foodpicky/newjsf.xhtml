@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:repeat var="prod" value="#{productManagedBean.productCategoryList}" id="opt">
+                                <!--<div class="row">-->
+                                <!-- Each popular food item starts -->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 food-item">
+            <div class="food-item-wrap">
+                <div class="figure-wrap bg-image" data-image-src="images/food1.jpg">
+                    <div class="distance"><i class="fa fa-pin"></i>1240m</div>
+                    <div class="rating pull-left"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o"></i> </div>
+                    <div class="review pull-right"><a href="#">198 reviews</a> </div>
+                </div>
+                <div class="content">
+                    <h5><a href="#">#{prod.productName}</a></h5>
+                    <div class="product-name">Fried Chicken with cheese</div>
+                    <div class="price-btn-block"> <span class="price">$ #{prod.price}</span> 
+                        <!--<a href="profile.html" class="btn theme-btn-dash pull-right">Order Now</a>-->
+                        <a href="#" class="btn btn-small btn btn-secondary pull-right" data-toggle="modal" data-target="#order-modal">+</a>
+                        </div>
+                </div>
+                <div class="restaurant-block">
+                    <div class="left">
+                        <a class="pull-left" href="#"> <img src="images/logo1.png" alt="Restaurant logo"/> </a>
+                        <div class="pull-left right-text"> <a href="#">Chicken Restaurant</a> <span>68 5th Avenue New York</span> </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        <!--</div>-->
+         </ui:repeat>
+    </h:body>
+</html>
+<f:view>
+            <ui:repeat var="pcart" value="#{myCartManagedBean.singleCart}">
+                <h:form>
+                    <h:commandLink id="hdnBtn" value="Your Order Is Approved Successfully Click Here Redirect To Home Page" class="btn btn-outline-success btn-block">
+                        <f:ajax event="click" listener="#{userManagedBean.editCartUser()}" />
+                        <f:ajax event="click" listener="#{myCartOrdersManagedBean.editMycartOrder(1)}" />
+                        <f:ajax event="click" listener="#{paymentManagedBean.submit(pcart)}" /> 
+                    </h:commandLink>
+                </h:form>
+            </ui:repeat>
+        </f:view>  
+<ui:repeat var="pcart" value="#{myCartManagedBean.singleCart}">
+                                                <h:form>
+                                                    <h:commandButton id="hdnBtn" class="btn btn-outline-success btn-block" value="Pay now"  actionListener="#{myCartOrdersManagedBean.editMycartOrder(1)}" action="#{paymentManagedBean.submit(pcart)}">
+                                                        <f:ajax event="click" listener="#{userManagedBean.editCartUser()}" />
+                                                    </h:commandButton>
+                                                    
+                                                </h:form>
+                                           </ui:repeat>

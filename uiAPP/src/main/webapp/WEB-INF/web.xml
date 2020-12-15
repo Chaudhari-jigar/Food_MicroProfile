@@ -36,6 +36,27 @@
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>loginServlet.LoginServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterUser</servlet-name>
+        <servlet-class>UserServlet.RegisterUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterVendor</servlet-name>
+        <servlet-class>UserServlet.RegisterVendor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterDealer</servlet-name>
+        <servlet-class>UserServlet.RegisterDealer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewUsers</servlet-name>
+        <servlet-class>UserServlet.ViewUsers</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CatServlet</servlet-name>
         <url-pattern>/CatServlet</url-pattern>
@@ -71,6 +92,26 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterUser</servlet-name>
+        <url-pattern>/RegisterUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterVendor</servlet-name>
+        <url-pattern>/RegisterVendor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterDealer</servlet-name>
+        <url-pattern>/RegisterDealer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewUsers</servlet-name>
+        <url-pattern>/ViewUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

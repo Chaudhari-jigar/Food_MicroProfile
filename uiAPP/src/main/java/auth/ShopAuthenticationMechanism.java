@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.enterprise.AuthenticationStatus;
@@ -25,6 +27,8 @@ import javax.security.enterprise.identitystore.IdentityStoreHandler;
 import javax.servlet.http.HttpServletRequest;
 import javax.security.enterprise.SecurityContext;
 import javax.security.enterprise.authentication.mechanism.http.AuthenticationParameters;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletResponse;
 import project.MyCredentials;
 
@@ -62,6 +66,7 @@ public class ShopAuthenticationMechanism implements HttpAuthenticationMechanism,
         LOGGER.log(Level.INFO, "Auth Request: {0}", request.getRequestURI());      
         
         
+        
         if (request.getParameter("username")!=null) {
             
             String username = request.getParameter("username");
@@ -84,7 +89,7 @@ public class ShopAuthenticationMechanism implements HttpAuthenticationMechanism,
                     request.getSession().setAttribute("groups", convertSetToList(result.getCallerGroups()));
                     request.getSession().setAttribute("statusmessage", "Hello " + result.getCallerGroups().toString()+" Login Success !!");
                     request.getSession().setAttribute("status",  "Login_Success");
-               
+                
                 status = context.notifyContainerAboutLogin(result.getCallerPrincipal(), result.getCallerGroups());
                 return status;
             }

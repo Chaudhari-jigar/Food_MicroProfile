@@ -1,0 +1,729 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
+        <link rel="icon" href="#"/>
+        <title>My Cart Order</title>
+        <!-- Bootstrap core CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="css/animsition.min.css" rel="stylesheet"/>
+        <link href="css/animate.css" rel="stylesheet"/>
+        <!-- Custom styles for this template -->
+        <link href="css/style.css" rel="stylesheet"/> 
+    </h:head>
+    <h:body>
+    <f:metadata>
+        <f:viewAction action="#{mybean.sessionCheck()}"/>
+    </f:metadata> 
+        
+        <f:metadata>
+            <f:viewAction action="#{mybean.sessionCheck()}"/>
+        </f:metadata>
+        <div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+         <!--header starts-->
+          <header id="header" class="header-scroll top-header headrom">
+            <!-- .navbar -->
+            <nav class="navbar navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
+                    <a class="navbar-brand" href="index.html"> <img class="img-rounded" src="images/food-picky-logo.png" alt=""/> </a>
+                    <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item"> <a class="nav-link active" href="index.jsf">Home <span class="sr-only">(current)</span></a> </li>
+                            
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Restaurants</a>
+                                <div class="dropdown-menu"> <a class="dropdown-item" href="ViewRestaurants.jsf">All Restaurants</a> <a class="dropdown-item" href="index.jsf">Chosen City</a></div>
+                            </li>
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Food</a>
+                                <div class="dropdown-menu"> 
+                                    <h:form>
+                                        <ul>
+                                        <c:forEach var="cat" items="#{categoryManageBean.categoryList}">
+                                            <li><h:commandButton class="dropdown-item" value="#{cat.categoryName}" action="#{productManagedBean.viewCatProduct1(cat.categoryID)}" /></li>
+                                        </c:forEach>
+                                        </ul>
+                                    </h:form>                                    
+                                </div>                                
+                            </li>
+<!--                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                <div class="dropdown-menu"> <a class="dropdown-item" href="pricing.html">Pricing</a> <a class="dropdown-item" href="contact.html">Contact</a> <a class="dropdown-item" href="submition.html">Submit restaurant</a> <a class="dropdown-item" href="registration.html">Registration</a>
+                                    <div class="dropdown-divider"></div> <a class="dropdown-item" href="checkout.html">Checkout</a> </div>
+                            </li>-->
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile</a>
+                                <div class="dropdown-menu"><h:form><h:commandLink class="dropdown-item" action="#{userManagedBean.updateMyUser()}">Edit Profile</h:commandLink></h:form><a class="dropdown-item" href="index.jsf">View Tracking</a><a class="dropdown-item" href="myorder.jsf">My Order</a><a class="dropdown-item" href="index.jsf" data-toggle="modal" data-target="#order-modal">Change Password</a><a class="dropdown-item" href="./LogOut.jsf">Logout</a> </div>
+                            </li>
+                            <li class="nav-item" style="height: 36px!important;margin-top:-8px;"> <a class="nav-link active" href="./profile.jsf"><img src="./images/add-shopping-cart.png" style="height:50px;width:50px;     "/></a> </li>
+                            <!--<li class="nav-item"> <a class="nav-link" href="./LogOut.jsf">Logout <span class="sr-only">(current)</span></a> </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- /.navbar -->
+        </header>
+         <div class="page-wrapper">
+            <!-- top Links -->
+            <div class="top-links">
+               <div class="container">
+                  <ul class="row links">
+                     <li class="col-xs-12 col-sm-3 link-item active"><span>1</span><a href="index.jsf">Choose Your Location</a></li>
+                     <li class="col-xs-12 col-sm-3 link-item active"><span>2</span><a href="restaurants.jsf">Choose Restaurant</a></li>
+                     <li class="col-xs-12 col-sm-3 link-item active"><span>3</span><a href="profile.jsf">Pick Your favorite food</a></li>
+                     <li class="col-xs-12 col-sm-3 link-item"><span>4</span><a href="checkout.jsf">Order and Pay online</a></li>
+                  </ul>
+               </div>
+            </div>
+            <!-- end:Top links -->
+            <!-- start: Inner page hero -->
+            <section class="inner-page-hero bg-image" data-image-src="images/profile-banner.jpg">
+               <div class="ms-content-wrapper">
+      <div class="row">
+
+<!--        <div class="col-md-12">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb pl-0">
+              <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i> Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Advanced UI Elements</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Sliders</li>
+            </ol>
+          </nav>
+
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Default Slider</h6>
+            </div>
+            <div class="ms-panel-body">
+              <p class="ms-directions">Use <code>data-interval="false"</code> in <code>.carousel</code> to disable autoplay</p>
+              <div id="defaultSlider" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="./images/1.jpg" alt="First slide" />
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/3.jpg" alt="Second slide"/>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/4.jpg" alt="Third slide" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Slider with Arrows and Captions</h6>
+            </div>
+            <div class="ms-panel-body">
+              <p class="ms-directions">Use <code>data-interval="{number}"</code> in <code>.carousel</code> to enable autoplay and specify a specific time between each slide</p>
+              <div id="arrowSlider" class="ms-arrow-slider carousel slide" data-ride="carousel" data-interval="false">
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="../../assets/img/costic/banner-4.jpg" alt="First slide" />
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Orange Sunset</h5>
+                      <p>Lorem Ipsum asit dolor kimet</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="../../assets/img/costic/banner-1.jpg" alt="Second slide" />
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Purple Skies</h5>
+                      <p>Lorem Ipsum asit dolor kimet</p>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="../../assets/img/costic/banner-2.jpg" alt="Third slide"/>
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>Night Light</h5>
+                      <p>Lorem Ipsum asit dolor kimet</p>
+                    </div>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#arrowSlider" role="button" data-slide="prev">
+                  <span class="material-icons" aria-hidden="true">keyboard_arrow_left</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#arrowSlider" role="button" data-slide="next">
+                  <span class="material-icons" aria-hidden="true">keyboard_arrow_right</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>-->
+<!--        <div class="col-md-6">
+          <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel-header">
+              <h6>Slider with Buttons</h6>
+            </div>
+            <div class="ms-panel-body">
+              <div id="buttonSlider" class="ms-button-slider carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active carousel-item-left">
+                    <img class="d-block w-100" src="./images/1.jpg" alt="First slide" />
+                  </div>
+                  <div class="carousel-item carousel-item-next carousel-item-left">
+                    <img class="d-block w-100" src="./images/3.jpg" alt="Second slide"/>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/4.jpg" alt="Third slide" />
+                  </div>
+                </div>
+                <div class="ms-carousel-buttons">
+                  <a class="carousel-control-prev" href="#buttonSlider" role="button" data-slide="prev">
+                    <span aria-hidden="true">Prev</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#buttonSlider" role="button" data-slide="next">
+                    <span aria-hidden="true">Next</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>-->
+<!--        <div class="col-md-12">
+          <div class="ms-panel ms-panel-fh">
+            <div class="ms-panel-header">
+              
+            </div>
+            <div class="ms-panel-body">
+              <div id="indicatorSlider" class="ms-indicator-slider carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/banner-3.jpg" alt="First slide" />
+                  </div>
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="./images/banner-2.jpg" alt="Second slide"/>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/banner-4.jpg" alt="Third slide" />
+                  </div>
+                </div>
+                <ol class="carousel-indicators">
+                  <li data-target="#indicatorSlider" data-slide-to="0" class=""></li>
+                  <li data-target="#indicatorSlider" data-slide-to="1" class="active"></li>
+                  <li data-target="#indicatorSlider" data-slide-to="2" class=""></li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>-->
+<!--        <div class="col-md-6">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Slider with Dotted Indicator</h6>
+            </div>
+            <div class="ms-panel-body">
+              <div id="dottedSlider" class="ms-dotted-indicator-slider carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#dottedSlider" data-slide-to="0" class=""></li>
+                  <li data-target="#dottedSlider" data-slide-to="1" class="active"></li>
+                  <li data-target="#dottedSlider" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="../../assets/img/costic/add-product-4.jpg" alt="First slide" />
+                  </div>
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="../../assets/img/costic/add-product-3.jpg" alt="Second slide" />
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="../../assets/img/costic/add-product-2.jpg" alt="Third slide"/>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#dottedSlider" role="button" data-slide="prev">
+                  <span class="material-icons" aria-hidden="true">keyboard_arrow_left</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#dottedSlider" role="button" data-slide="next">
+                  <span class="material-icons" aria-hidden="true">keyboard_arrow_right</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>-->
+        <div class="col-md-12">
+          <div class="ms-panel">
+            <div class="ms-panel-header">
+              <h6>Slider Images</h6>
+            </div>
+            <div class="ms-panel-body">
+              <div id="imagesSlider" class="ms-image-slider carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/banner-3.jpg" alt="First slide" />
+                  </div>
+                  <div class="carousel-item active">
+                    <img class="d-block w-100" src="./images/banner-2.jpg" alt="Second slide"/>
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-block w-100" src="./images/banner-4.jpg" alt="Third slide" />
+                  </div>
+                </div>
+                <ol class="carousel-indicators">
+                  <li data-target="#imagesSlider" data-slide-to="0" class=""> <img class="d-block w-100" src="./images/banner-1.jpg" alt="First slide" /></li>
+                  <li data-target="#imagesSlider" data-slide-to="1" class="active"><img class="d-block w-100" src="./images/banner-2.jpg" alt="Second slide" /></li>
+                  <li data-target="#imagesSlider" data-slide-to="2" class=""><img class="d-block w-100" src="./images/banner-3.jpg" alt="Third slide" /></li>
+                </ol>
+              </div>    
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+            </section>
+            <!-- end:Inner page hero -->
+            <div class="breadcrumb">
+               <div class="container">
+                  <ul>
+                     <li><a href="#" class="active">Home</a></li>
+                     <li><a href="#">Search results</a></li>
+                     <li>Profile</li>
+                  </ul>
+               </div>
+            </div>
+            <div class="container m-t-30">
+               <div class="row">
+                  <!-- end:Bar -->
+                  <div class="col-xs-12 col-md-12 col-lg-8">
+                     <div class="sidebar-wrap">
+                        <div class="widget widget-cart">
+                           <div class="widget-heading">
+                              <h3 class="widget-title text-dark">
+                                 Your Shopping Cart
+                              </h3>
+                              <div class="clearfix"></div>
+                           </div>
+
+                            <c:forEach items="#{myCartOrdersManagedBean.mycartAllList}" var="cart" varStatus="ids">
+                            <div class="order-row bg-white">
+
+                               <div class="widget-body">
+                                   <!--title-row-->
+                                   <div class="form-group row">
+                                       <div class="col-xs-8">
+                                            <b>#{cart.productID.productName}</b>
+                                       </div>
+                                       <div class="col-xs-4">
+                                       <h:form id="form2">
+                                            <h:commandLink action="#{myCartOrdersManagedBean.deleteMycartOrder(cart.cartOrderID)}"><i class="fa fa-trash pull-right"></i></h:commandLink>
+                                       </h:form>
+                                       </div>    
+                                   </div>
+                                   <div class="form-group row">
+                                    <div class="col-xs-8">
+                                    <h:form id="cart-price#{ids.index + 1}">
+                                        Rs. <h:outputText id="cart-price1" value="#{cart.price}"/>   
+                                    </h:form>
+                                    </div> 
+                                   </div>
+                                   
+                                  <div class="form-group row">
+                                     <div class="col-xs-6"> 
+                                        <h:form id="myForm">
+
+                                            <h:inputText id="inputName#{ids.index + 1}" value="#{myCartOrdersManagedBean.selectedVal}">
+<!--                                               <f:validateRegex pattern="^([1-9]+)$" />   
+                                               <p:ajax update="msgLastname" event="keyup" />  -->
+                                               <f:ajax listener="#{myCartOrdersManagedBean.selectValueChanged}" execute="inputName#{ids.index + 1}" render="cart-price#{ids.index + 1}"/>
+                                               <f:ajax listener="#{myCartOrdersManagedBean.updateQty(cart.cartOrderID)}" execute="inputName#{ids.index + 1}" render="newval"/> 
+                                               <f:ajax listener="#{myCartOrdersManagedBean.selectValueChanged}" execute="inputName#{ids.index + 1}" render="qtyerror#{ids.index + 1} disablebtn"/>
+                                            </h:inputText>
+                                            <h:outputLabel style="color:red;" id="qtyerror#{ids.index + 1}" value="#{myCartOrdersManagedBean.inputTextVal}">
+                                                
+                                            </h:outputLabel>
+                                            <!--<p:message for="inputName" id="msgLastname" display="icon" />-->  
+                                        </h:form>   
+                                        <!--<input class="form-control" type="number" value="2" id="example-number-input"/>--> 
+                                     </div>
+                                      <div class="col-xs-6">     
+                                       
+                                    
+                                        <!--<input class="form-control" type="number" value="2" id="example-number-input"/>--> 
+                                     </div>
+                                  </div>
+                                    
+                               </div>
+                            </div>
+                            </c:forEach>
+                            
+<!--                           <div class="order-row">
+                              <div class="widget-body">
+                                 <div class="title-row">Carlsberg Beer <a href="#"><i class="fa fa-trash pull-right"></i></a></div>
+                                 <div class="form-group row no-gutter">
+                                    <div class="col-xs-8">
+                                       <select class="form-control b-r-0">
+                                          <option>Size SM</option>
+                                          <option>Size LG</option>
+                                          <option>Size XL</option>
+                                       </select>
+                                    </div>
+                                    <div class="col-xs-4">
+                                       <input class="form-control" value="4" id="quant-input"/> 
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>-->
+                           <!-- end:Order row -->
+                           <div class="widget-delivery clearfix">
+                              <form>
+                                 <div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 b-t-0">
+                                    <label class="custom-control custom-radio">
+                                    <input id="radio4" name="radio" type="radio" class="custom-control-input" checked=""/> <span class="custom-control-indicator"></span> <span class="custom-control-description">Delivery</span> </label>
+                                 </div>
+                                 <div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 b-t-0">
+                                    <label class="custom-control custom-radio">
+                                    <input id="radio3" name="radio" type="radio" class="custom-control-input"/> <span class="custom-control-indicator"></span> <span class="custom-control-description">Takeout</span> </label>
+                                 </div>
+                              </form>
+                           </div>
+                           <div class="widget-body">
+                              <div class="price-wrap text-xs-center">
+                                <p>TOTAL</p>
+                                <h:form id="newval">
+                                <c:set var="tot" value="0" scope="request"/>
+
+                                <c:forEach items="#{myCartOrdersManagedBean.mycartAllList}" var="cart">
+                                    <!--<%= tot += tots%>-->
+                                    <c:set var="tot"  value="${tot = tot + cart.price}" scope="request"/>
+                                </c:forEach>
+                                <h3 class="value"><strong>Rs. <h:outputLabel value="#{tot}"/></strong></h3>
+                                </h:form>
+                                 <p>Free Shipping</p>
+                                 <h:form id="disablebtn">
+                                     <c:if test="#{(not empty myCartOrdersManagedBean.inputTextVal) || (empty myCartOrdersManagedBean.mycartAllList)}"><h:commandButton value="Checkout" class="btn theme-btn btn-lg" action="#{userManagedBean.updateCartUser()}" actionListener="#{myCartManagedBean.editMycart(tot)}" disabled="true">
+<!--                                        <f:actionListener binding=""/>
+                                        <f:actionListener binding=""/>-->
+                                    </h:commandButton> </c:if>
+                                     
+                                    <c:if test="#{(empty myCartOrdersManagedBean.inputTextVal) and (not empty myCartOrdersManagedBean.mycartAllList)}"><h:commandButton value="Checkout" class="btn theme-btn btn-lg" action="#{userManagedBean.updateCartUser()}" actionListener="#{myCartManagedBean.editMycart(tot)}">
+<!--                                        <f:actionListener binding=""/>
+                                        <f:actionListener binding=""/>-->
+                                    </h:commandButton> </c:if>
+                                 <!--<button onclick="location.href='checkout.jsf'" type="button" class="btn theme-btn btn-lg">Checkout</button>-->
+                                 </h:form>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-12 col-md-12 col-lg-4">
+                    <img class="d-block w-100" src="./images/banner-4.jpg" style="border-top-left-radius: 83px!important;border-top-right-radius: 83px!important;"/>
+                    <img class="d-block w-100" src="./images/banner-3.jpg" />
+                    <img class="d-block w-100" src="./images/banner-2.jpg" style="border-bottom-left-radius: 83px!important;border-bottom-right-radius: 83px!important;"/>
+                    <img class="d-block w-100" src="./images/banner-1.jpg" style="border-top-left-radius: 83px!important;border-top-right-radius: 83px!important;"/>
+                    <img class="d-block w-100" src="./images/profile-banner.jpg" />
+                    <img class="d-block w-100" src="./images/banner-4.jpg" style="border-bottom-left-radius: 83px!important;border-bottom-right-radius: 83px!important;"/>
+                  </div>
+                  <!-- end:Right Sidebar -->
+               </div>
+               <!-- end:row -->
+            </div>
+            <!-- end:Container -->
+            <section class="app-section">
+               <div class="app-wrap">
+                  <div class="container">
+                     <div class="row text-img-block text-xs-left">
+                        <div class="container">
+                           <div class="col-xs-12 col-sm-6 hidden-xs-down right-image text-center">
+                              <figure> <img src="images/app.png" alt="Right Image"/> </figure>
+                           </div>
+                           <div class="col-xs-12 col-sm-6 left-text">
+                              <h3>The Best Food Delivery App</h3>
+                              <p>Now you can make food happen pretty much wherever you are thanks to the free easy-to-use Food Delivery &amp; Takeout App.</p>
+                              <div class="social-btns">
+                                 <a href="#" class="app-btn apple-button clearfix">
+                                    <div class="pull-left"><i class="fa fa-apple"></i> </div>
+                                    <div class="pull-right"> <span class="text">Available on the</span> <span class="text-2">App Store</span> </div>
+                                 </a>
+                                 <a href="#" class="app-btn android-button clearfix">
+                                    <div class="pull-left"><i class="fa fa-android"></i> </div>
+                                    <div class="pull-right"> <span class="text">Available on the</span> <span class="text-2">Play store</span> </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <!-- start: FOOTER -->
+            <footer class="footer">
+               <div class="container">
+                  <!-- top footer statrs -->
+                  <div class="row top-footer">
+                     <div class="col-xs-12 col-sm-3 footer-logo-block color-gray">
+                        <a href="#"> <img src="images/food-picky-logo.png" alt="Footer logo"/> </a> <span>Order Delivery &amp; Take-Out </span> 
+                     </div>
+                     <div class="col-xs-12 col-sm-2 about color-gray">
+                        <h5>About Us</h5>
+                        <ul>
+                           <li><a href="#">About us</a> </li>
+                           <li><a href="#">History</a> </li>
+                           <li><a href="#">Our Team</a> </li>
+                           <li><a href="#">We are hiring</a> </li>
+                        </ul>
+                     </div>
+                     <div class="col-xs-12 col-sm-2 how-it-works-links color-gray">
+                        <h5>How it Works</h5>
+                        <ul>
+                           <li><a href="#">Enter your location</a> </li>
+                           <li><a href="#">Choose restaurant</a> </li>
+                           <li><a href="#">Choose meal</a> </li>
+                           <li><a href="#">Pay via credit card</a> </li>
+                           <li><a href="#">Wait for delivery</a> </li>
+                        </ul>
+                     </div>
+                     <div class="col-xs-12 col-sm-2 pages color-gray">
+                        <h5>Pages</h5>
+                        <ul>
+                           <li><a href="#">Search results page</a> </li>
+                           <li><a href="#">User Sing Up Page</a> </li>
+                           <li><a href="#">Pricing page</a> </li>
+                           <li><a href="#">Make order</a> </li>
+                           <li><a href="#">Add to cart</a> </li>
+                        </ul>
+                     </div>
+                     <div class="col-xs-12 col-sm-3 popular-locations color-gray">
+                        <h5>Popular locations</h5>
+                        <ul>
+                           <li><a href="#">Sarajevo</a> </li>
+                           <li><a href="#">Split</a> </li>
+                           <li><a href="#">Tuzla</a> </li>
+                           <li><a href="#">Sibenik</a> </li>
+                           <li><a href="#">Zagreb</a> </li>
+                           <li><a href="#">Brcko</a> </li>
+                           <li><a href="#">Beograd</a> </li>
+                           <li><a href="#">New York</a> </li>
+                           <li><a href="#">Gradacac</a> </li>
+                           <li><a href="#">Los Angeles</a> </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <!-- top footer ends -->
+                  <!-- bottom footer statrs -->
+                  <div class="row bottom-footer">
+                     <div class="container">
+                        <div class="row">
+                           <div class="col-xs-12 col-sm-3 payment-options color-gray">
+                              <h5>Payment Options</h5>
+                              <ul>
+                                 <li>
+                                    <a href="#"> <img src="images/paypal.png" alt="Paypal"/> </a>
+                                 </li>
+                                 <li>
+                                    <a href="#"> <img src="images/mastercard.png" alt="Mastercard"/> </a>
+                                 </li>
+                                 <li>
+                                    <a href="#"> <img src="images/maestro.png" alt="Maestro"/> </a>
+                                 </li>
+                                 <li>
+                                    <a href="#"> <img src="images/stripe.png" alt="Stripe"/> </a>
+                                 </li>
+                                 <li>
+                                    <a href="#"> <img src="images/bitcoin.png" alt="Bitcoin"/> </a>
+                                 </li>
+                              </ul>
+                           </div>
+                           <div class="col-xs-12 col-sm-4 address color-gray">
+                              <h5>Address</h5>
+                              <p>Concept design of oline food order and deliveye,planned as restaurant directory</p>
+                              <h5>Phone: <a href="tel:+080000012222">080 000012 222</a></h5>
+                           </div>
+                           <div class="col-xs-12 col-sm-5 additional-info color-gray">
+                              <h5>Addition informations</h5>
+                              <p>Join the thousands of other restaurants who benefit from having their menus on TakeOff</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- bottom footer ends -->
+               </div>
+            </footer>
+            <!-- end:Footer -->
+         </div>
+         <!-- end:page wrapper -->
+      </div>
+      <!--/end:Site wrapper -->
+      <!-- Modal -->
+      <div class="modal fade" id="order-modal" tabindex="-1" role="dialog" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+               <div class="modal-body cart-addon">
+                  <div class="food-item white">
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-lg-6">
+                           <div class="item-img pull-left">
+                              <a class="restaurant-logo pull-left" href="#"><img src="images/pepsi.png" alt="Food logo"/></a>
+                           </div>
+                           <!-- end:Logo -->
+                           <div class="rest-descr">
+                              <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6>
+                           </div>
+                           <!-- end:Description -->
+                        </div>
+                        <!-- end:col -->
+                        <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">$ 2.99</span></div>
+                        <div class="col-xs-6 col-sm-4 col-lg-4">
+                           <div class="row no-gutter">
+                              <div class="col-xs-7">
+                                 <select class="form-control b-r-0" id="exampleSelect2">
+                                    <option>Size SM</option>
+                                    <option>Size LG</option>
+                                    <option>Size XL</option>
+                                 </select>
+                              </div>
+                              <div class="col-xs-5">
+                                 <input class="form-control" type="number" value="0" id="quant-input-2"/> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- end:row -->
+                  </div>
+                  <!-- end:Food item -->
+                  <div class="food-item">
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-lg-6">
+                           <div class="item-img pull-left">
+                              <a class="restaurant-logo pull-left" href="#"><img src="images/cola.jpg" alt="Food logo"/></a>
+                           </div>
+                           <!-- end:Logo -->
+                           <div class="rest-descr">
+                              <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6>
+                           </div>
+                           <!-- end:Description -->
+                        </div>
+                        <!-- end:col -->
+                        <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">$ 2.49</span></div>
+                        <div class="col-xs-6 col-sm-4 col-lg-4">
+                           <div class="row no-gutter">
+                              <div class="col-xs-7">
+                                 <select class="form-control b-r-0" id="exampleSelect3">
+                                    <option>Size SM</option>
+                                    <option>Size LG</option>
+                                    <option>Size XL</option>
+                                 </select>
+                              </div>
+                              <div class="col-xs-5">
+                                 <input class="form-control" type="number" value="0" id="quant-input-3"/> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- end:row -->
+                  </div>
+                  <!-- end:Food item -->
+                  <div class="food-item">
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-lg-6">
+                           <div class="item-img pull-left">
+                              <a class="restaurant-logo pull-left" href="#"><img src="images/fanta.jpg" alt="Food logo"/></a>
+                           </div>
+                           <!-- end:Logo -->
+                           <div class="rest-descr">
+                              <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6>
+                           </div>
+                           <!-- end:Description -->
+                        </div>
+                        <!-- end:col -->
+                        <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">$ 1.99</span></div>
+                        <div class="col-xs-6 col-sm-4 col-lg-4">
+                           <div class="row no-gutter">
+                              <div class="col-xs-7">
+                                 <select class="form-control b-r-0" id="exampleSelect5">
+                                    <option>Size SM</option>
+                                    <option>Size LG</option>
+                                    <option>Size XL</option>
+                                 </select>
+                              </div>
+                              <div class="col-xs-5">
+                                 <input class="form-control" type="number" value="0" id="quant-input-4"/> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- end:row -->
+                  </div>
+                  <!-- end:Food item -->
+                  <div class="food-item">
+                     <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-lg-6">
+                           <div class="item-img pull-left">
+                              <a class="restaurant-logo pull-left" href="#"><img src="images/beer.jpg" alt="Food logo"/></a>
+                           </div>
+                           <!-- end:Logo -->
+                           <div class="rest-descr">
+                              <h6><a href="#">Sandwich de Alegranza Grande Menü (28 - 30 cm.)</a></h6>
+                           </div>
+                           <!-- end:Description -->
+                        </div>
+                        <!-- end:col -->
+                        <div class="col-xs-6 col-sm-2 col-lg-2 text-xs-center"> <span class="price pull-left">$ 3.15</span></div>
+                        <div class="col-xs-6 col-sm-4 col-lg-4">
+                           <div class="row no-gutter">
+                              <div class="col-xs-7">
+                                 <select class="form-control b-r-0" id="exampleSelect6">
+                                    <option>Size SM</option>
+                                    <option>Size LG</option>
+                                    <option>Size XL</option>
+                                 </select>
+                              </div>
+                              <div class="col-xs-5">
+                                 <input class="form-control" type="number" value="0" id="quant-input-5"/> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- end:row -->
+                  </div>
+                  <!-- end:Food item -->
+               </div>
+
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn theme-btn">Add to cart</button>
+               </div>
+            </div>
+         </div>
+      </div>
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/animsition.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/headroom.js"></script>
+    <script src="js/foodpicky.min.js"></script>
+    <script>
+//        function fun(a)`
+//        {
+//            alert(a);
+//            document.getElementById('inputName').value = a;
+//            var c = document.getElementById('inputName').value;
+//            alert(c);
+//        }
+    </script>
+    </h:body>
+</html>
+

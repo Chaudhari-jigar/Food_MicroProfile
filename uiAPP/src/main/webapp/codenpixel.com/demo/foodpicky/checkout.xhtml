@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="icon" href="#"/>
+    <title>Starter Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="css/animsition.min.css" rel="stylesheet"/>
+    <link href="css/animate.css" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+    <f:metadata>
+        <f:viewAction action="#{mybean.sessionCheck()}"/>
+    </f:metadata> 
+        
+         <div class="site-wrapper animsition" data-animsition-in="fade-in" data-animsition-out="fade-out">
+    <div class="site-wrapper">
+        <!--header starts-->
+         <header id="header" class="header-scroll top-header headrom">
+            <!-- .navbar -->
+            <nav class="navbar navbar-dark">
+                <div class="container">
+                    <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#mainNavbarCollapse">&#9776;</button>
+                    <a class="navbar-brand" href="index.html"> <img class="img-rounded" src="images/food-picky-logo.png" alt=""/> </a>
+                    <div class="collapse navbar-toggleable-md  float-lg-right" id="mainNavbarCollapse">
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item"> <a class="nav-link active" href="index.jsf">Home <span class="sr-only">(current)</span></a> </li>
+                            
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Restaurants</a>
+                                <div class="dropdown-menu"> <a class="dropdown-item" href="ViewRestaurants.jsf">All Restaurants</a> <a class="dropdown-item" href="index.jsf">Chosen City</a></div>
+                            </li>
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Food</a>
+                                <div class="dropdown-menu"> 
+                                    <h:form>
+                                        <ul>
+                                        <c:forEach var="cat" items="#{categoryManageBean.categoryList}">
+                                            <li><h:commandButton class="dropdown-item" value="#{cat.categoryName}" action="#{productManagedBean.viewCatProduct1(cat.categoryID)}" /></li>
+                                        </c:forEach>
+                                        </ul>
+                                    </h:form>                                    
+                                </div>                                
+                            </li>
+<!--                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                <div class="dropdown-menu"> <a class="dropdown-item" href="pricing.html">Pricing</a> <a class="dropdown-item" href="contact.html">Contact</a> <a class="dropdown-item" href="submition.html">Submit restaurant</a> <a class="dropdown-item" href="registration.html">Registration</a>
+                                    <div class="dropdown-divider"></div> <a class="dropdown-item" href="checkout.html">Checkout</a> </div>
+                            </li>-->
+                            <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Profile</a>
+                                <div class="dropdown-menu"><h:form><h:commandLink class="dropdown-item" action="#{userManagedBean.updateMyUser()}">Edit Profile</h:commandLink></h:form><a class="dropdown-item" href="index.jsf">View Tracking</a><a class="dropdown-item" href="myorder.jsf">My Order</a><a class="dropdown-item" href="index.jsf" data-toggle="modal" data-target="#order-modal">Change Password</a><a class="dropdown-item" href="./LogOut.jsf">Logout</a> </div>
+                            </li>
+                            <li class="nav-item" style="height: 36px!important;margin-top:-8px;"> <a class="nav-link active" href="./profile.jsf"><img src="./images/add-shopping-cart.png" style="height:50px;width:50px;     "/></a> </li>
+                            <!--<li class="nav-item"> <a class="nav-link" href="./LogOut.jsf">Logout <span class="sr-only">(current)</span></a> </li>-->
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- /.navbar -->
+        </header>
+        <div class="page-wrapper">
+            <div class="top-links">
+                <div class="container">
+                    <ul class="row links">
+                        <li class="col-xs-12 col-sm-3 link-item active"><span>1</span><a href="index.jsf">Choose Your Location</a></li>
+                        <li class="col-xs-12 col-sm-3 link-item active"><span>2</span><a href="restaurants.jsf">Choose Restaurant</a></li>
+                        <li class="col-xs-12 col-sm-3 link-item active"><span>3</span><a href="profile.jsf">Pick Your favorite food</a></li>
+                        <li class="col-xs-12 col-sm-3 link-item"><span>4</span><a href="checkout.jsf">Order and Pay online</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container m-t-30">
+                <div class="widget clearfix">
+                    <!-- /widget heading -->
+                    <div class="widget-heading">
+                        <h3 class="widget-title text-dark">
+                                        Cart summary
+                                    </h3>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="widget-body">
+                        <h:form>
+                            <div class="row">
+                                <div class="col-sm-6 margin-b-30">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Name*</label>
+                                                <h:inputText class="form-control" id="sds" value="${userManagedBean.userName}" required="true" requiredMessage="Please Required Name !!"></h:inputText></div>
+                                                <h:message for="sds" style=" color: red"/>
+                                                <!--/form-group-->
+                                        </div>
+<!--                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Last Name*</label>
+                                                <input type="text" class="form-control" placeholder="Doe"/> </div>
+                                            /form-group
+                                        </div>-->
+                                    </div>
+<!--                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Country*</label>
+                                                <select class="form-control">
+                                                    <option>India</option>
+                                                    <option>USA</option>
+                                                    <option>UK</option>
+                                                    <option>Australia</option>
+                                                    <option>Japan</option>
+                                                    <option>Columbia</option>
+                                                    <option>Poland</option>
+                                                </select>
+                                            </div>
+                                            /form-group
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+                                                <input type="text" class="form-control" placeholder="Lorem ipsum"/> </div>
+                                            /form-group
+                                        </div>
+                                    </div>-->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Full Address*</label>
+                                                <h:inputTextarea rows="3" class="form-control" id="add" value="${userManagedBean.address}" required="true" requiredMessage="Please Required Address !!"></h:inputTextarea> </div>
+                                                <h:message for="add" style=" color: red"/>
+                                                <!--/form-group-->
+                                        </div>
+                                    </div>
+<!--                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>City / State*</label>
+                                                <input type="text" class="form-control" placeholder="Jaipur"/> </div>
+                                            /form-group
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Zip/ Postal Code*</label>
+                                                <input type="text" class="form-control" placeholder="302012"/> </div>
+                                            /form-group
+                                        </div>
+                                    </div>-->
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Email Address*</label>
+                                                <h:inputText class="form-control" id="email" value="${userManagedBean.emailID}" required="true" requiredMessage="Please Required email !!"></h:inputText> </div>
+                                                <h:message for="email" style=" color: red"/>
+                                                <!--/form-group-->
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Mobile No*</label>
+                                                <h:inputText class="form-control" id="mno" value="${userManagedBean.mobileNo}" required="true" requiredMessage="Please Required mobileno !!"></h:inputText> </div>
+                                                <h:message for="mno" style=" color: red"/>
+                                                <!--/form-group-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="cart-totals margin-b-20">
+                                        <div class="cart-totals-title">
+                                            <h4>Cart Summary</h4> </div>
+                                        <div class="cart-totals-fields">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Cart's Subtotal</td>
+                                                        <c:set var="total" value="0" scope="request"/>
+                                                        <ui:repeat var="cart" value="#{myCartManagedBean.single}">
+                                                            <c:set var="total" value="#{total = 10.0 + cart}" scope="request"/>
+                                                            <td>Rs. #{cart}</td>
+                                                        </ui:repeat>    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Shipping &amp; Handling</td>
+                                                        <td>Rs. 10.0</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-color"><strong>Total</strong></td>
+                                                        <ui:repeat var="cart" value="#{myCartManagedBean.single}">
+                                                            <td class="text-color"><strong>Rs. #{cart + 10}</strong></td>
+                                                        </ui:repeat> 
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--cart summary-->
+                                    <div class="payment-option">
+                                        <ul class=" list-unstyled">
+                                            <li>
+                                                <label class="custom-control custom-radio  m-b-20">
+                                                    <input id="radioStacked1" name="radio-stacked" type="radio" class="custom-control-input"/> <span class="custom-control-indicator"></span> <span class="custom-control-description">Payment on delivery</span>
+                                                    <br/> <span>Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</span> </label>
+                                            </li>
+                                            <li>
+                                                <label class="custom-control custom-radio  m-b-10">
+                                                    <input name="radio-stacked" type="radio" class="custom-control-input"/> <span class="custom-control-indicator"></span> <span class="custom-control-description">Paypal <img src="images/paypal.jpg" alt="" width="90"/></span> </label>
+                                            </li>
+                                        </ul>
+                                        
+                                        <p class="text-xs-center"> 
+                                            
+                                           <div id="paypal-button-container"></div>
+                                                <!-- Include the PayPal JavaScript SDK  -->
+                                                <script src="https://www.paypal.com/sdk/js?client-id=sb" />       
+                                                <ui:repeat var="cart" value="#{myCartManagedBean.single}">
+                                                <script>
+                                                    paypal.Buttons({
+
+                                                        // Set up the transaction
+                                                        createOrder: function(data, actions) {
+                                                            return actions.order.create({
+                                                                purchase_units: [{
+                                                                    amount: {
+                                                                        value: #{cart + 10}
+                                                                    }
+                                                                }]
+                                                            });
+                                                        },
+                                                        // Finalize the transaction
+                                                        onApprove: function(data, actions) {
+                                                            return actions.order.capture().then(function(details) {
+                                                               alert('Transaction completed by ' + details.payer.name.given_name + '!');
+//                                                                document.getElementById('hdnBtn').click();
+                                                                window.location="paypal.jsf";
+                                                            });
+                                                        }
+                                                    }).render('#paypal-button-container');
+                                                </script> 
+                                                </ui:repeat>    
+                                            <!--<a href="#" class="btn btn-outline-success btn-block">Pay now</a>--> 
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+            <section class="app-section">
+                <div class="app-wrap">
+                    <div class="container">
+                        <div class="row text-img-block text-xs-left">
+                            <div class="container">
+                                <div class="col-xs-12 col-sm-6  right-image text-center">
+                                    <figure> <img src="images/app.png" alt="Right Image"/> </figure>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 left-text">
+                                    <h3>The Best Food Delivery App</h3>
+                                    <p>Now you can make food happen pretty much wherever you are thanks to the free easy-to-use Food Delivery &amp; Takeout App.</p>
+                                    <div class="social-btns">
+                                        <a href="#" class="app-btn apple-button clearfix">
+                                            <div class="pull-left"><i class="fa fa-apple"></i> </div>
+                                            <div class="pull-right"> <span class="text">Available on the</span> <span class="text-2">App Store</span> </div>
+                                        </a>
+                                        <a href="#" class="app-btn android-button clearfix">
+                                            <div class="pull-left"><i class="fa fa-android"></i> </div>
+                                            <div class="pull-right"> <span class="text">Available on the</span> <span class="text-2">Play store</span> </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- start: FOOTER -->
+            <footer class="footer">
+                <div class="container">
+                    <!-- top footer statrs -->
+                    <div class="row top-footer">
+                        <div class="col-xs-12 col-sm-3 footer-logo-block color-gray">
+                            <a href="#"> <img src="images/food-picky-logo.png" alt="Footer logo"/> </a> <span>Order Delivery &amp; Take-Out </span> </div>
+                        <div class="col-xs-12 col-sm-2 about color-gray">
+                            <h5>About Us</h5>
+                            <ul>
+                                <li><a href="#">About us</a> </li>
+                                <li><a href="#">History</a> </li>
+                                <li><a href="#">Our Team</a> </li>
+                                <li><a href="#">We are hiring</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 how-it-works-links color-gray">
+                            <h5>How it Works</h5>
+                            <ul>
+                                <li><a href="#">Enter your location</a> </li>
+                                <li><a href="#">Choose restaurant</a> </li>
+                                <li><a href="#">Choose meal</a> </li>
+                                <li><a href="#">Pay via credit card</a> </li>
+                                <li><a href="#">Wait for delivery</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 pages color-gray">
+                            <h5>Pages</h5>
+                            <ul>
+                                <li><a href="#">Search results page</a> </li>
+                                <li><a href="#">User Sing Up Page</a> </li>
+                                <li><a href="#">Pricing page</a> </li>
+                                <li><a href="#">Make order</a> </li>
+                                <li><a href="#">Add to cart</a> </li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 popular-locations color-gray">
+                            <h5>Popular locations</h5>
+                            <ul>
+                                <li><a href="#">Sarajevo</a> </li>
+                                <li><a href="#">Split</a> </li>
+                                <li><a href="#">Tuzla</a> </li>
+                                <li><a href="#">Sibenik</a> </li>
+                                <li><a href="#">Zagreb</a> </li>
+                                <li><a href="#">Brcko</a> </li>
+                                <li><a href="#">Beograd</a> </li>
+                                <li><a href="#">New York</a> </li>
+                                <li><a href="#">Gradacac</a> </li>
+                                <li><a href="#">Los Angeles</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- top footer ends -->
+                    <!-- bottom footer statrs -->
+                    <div class="row bottom-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-3 payment-options color-gray">
+                                    <h5>Payment Options</h5>
+                                    <ul>
+                                        <li>
+                                            <a href="#"> <img src="images/paypal.png" alt="Paypal"/> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/mastercard.png" alt="Mastercard"/> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/maestro.png" alt="Maestro"/> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/stripe.png" alt="Stripe"/> </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <img src="images/bitcoin.png" alt="Bitcoin"/> </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 address color-gray">
+                                    <h5>Address</h5>
+                                    <p>Concept design of oline food order and deliveye,planned as restaurant directory</p>
+                                    <h5>Phone: <a href="tel:+080000012222">080 000012 222</a></h5> </div>
+                                <div class="col-xs-12 col-sm-5 additional-info color-gray">
+                                    <h5>Addition informations</h5>
+                                    <p>Join the thousands of other restaurants who benefit from having their menus on TakeOff</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- bottom footer ends -->
+                </div>
+            </footer>
+            <!-- end:Footer -->
+        </div>
+        <!-- end:page wrapper -->
+         </div>
+    </div>
+    <!--/end:Site wrapper -->
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/animsition.min.js"></script>
+    <script src="js/bootstrap-slider.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/headroom.js"></script>
+    <script src="js/foodpicky.min.js"></script>
+    </h:body>
+</html>
+
