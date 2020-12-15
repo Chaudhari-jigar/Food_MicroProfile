@@ -1,0 +1,14 @@
+Entity\Product_.class
+com\mycompany\testproducttemp\config\BootStrap.class
+Entity\User.class
+com\mycompany\testproducttemp\config\Producers.class
+Entity\Role.class
+Entity\Category.class
+Entity\Role_.class
+com\mycompany\testproducttemp\service\ProductResource.class
+Entity\Product.class
+Entity\User_.class
+model\ProductService.class
+Entity\Category_.class
+com\mycompany\testproducttemp\config\CrossOriginResourceSharingFilter.class
+com\mycompany\testproducttemp\service\HealthCheckService.class
