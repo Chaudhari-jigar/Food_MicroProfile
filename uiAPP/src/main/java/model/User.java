@@ -10,6 +10,8 @@ package model;
  * @author admin
  */
 public class User {
+    
+    
     private int userID;
     private String userName;
     private String mobileNo;
@@ -20,12 +22,12 @@ public class User {
     private String password;
     private int status;
     private int approved;
-    private Role role;
+    private Role roleID;
     
     private String image,userImage;
     private String image1;
    
-    private int roleID;
+//    private int roleID;
     private static int on;
     private String roleName;
 
@@ -109,13 +111,13 @@ public class User {
         this.approved = approved;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 
     public String getImage() {
         return image;
@@ -141,14 +143,32 @@ public class User {
         this.image1 = image1;
     }
 
-    public int getRoleID() {
+//    public int getRoleID() {
+//        return roleID;
+//    }
+//
+//    public void setRoleID(int roleID) {
+//        this.roleID = roleID;
+//    }
+
+    public Role getRoleID() {
         return roleID;
     }
 
-    public void setRoleID(int roleID) {
+    public void setRoleID(Role roleID) {
         this.roleID = roleID;
     }
 
+    public static int getOn() {
+        return on;
+    }
+
+    public static void setOn(int on) {
+        User.on = on;
+    }
+
+    
+    
     public String getRoleName() {
         return roleName;
     }

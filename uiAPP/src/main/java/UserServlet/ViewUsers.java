@@ -77,7 +77,7 @@ public class ViewUsers extends HttpServlet {
                         
                         Role r = new Role();
                         r.setRoleID(3);
-                        u.setRoleID(r.getRoleID());
+                        u.setRoleID(r);
                         System.err.println("////////   => "+ u.getCity() + "  " + u.getRoleID() + " <= //////////");
                         userclient.addUser(u);
                     }
@@ -109,7 +109,7 @@ public class ViewUsers extends HttpServlet {
                         u.setApproved(Integer.parseInt(approved));
                         Role r = new Role();
                         r.setRoleID(Integer.parseInt(role));
-                        u.setRole(r);
+                        u.setRoleID(r);
                         
                         
                         userclient.addUser(u);                    
@@ -142,29 +142,29 @@ public class ViewUsers extends HttpServlet {
                         u.setApproved(Integer.parseInt(approved));
                         Role r = new Role();
                         r.setRoleID(Integer.parseInt(role));
-                        u.setRole(r);
+                        u.setRoleID(r);
                         
                         userclient.addUser(u);                    
                     }
                 } catch (Exception e) {
                 }
                     out.println("<tr><td>---------------User List---------------</td></tr>");
-//                    users = userclient.getAllUsers();
-//                    out.println("<tr><th> Index </th><th>UserName</th><th>Email</th><th>Contact</th><th>Address</th><th>Role</th><th>Update</th><th>Delete</th></tr>");
-//                    int i = 0;
-//                    for(User u : users)
-//                    {
-//                        i++;
-//                        out.println("<tr><td>"+i+"</td><td>"
-//                                +u.getUserImage()+"</td><td>"
-//                                +u.getEmailID()+"</td><td>"
-//                                +u.getMobileNo()+"</td><td>"
-//                                +u.getAddress()+"</td><td>"
-//                                +u.getRole().getRoleName()
-//                                + "<td><a href='/uiAPP/UpdateProduct?id="+u.getUserID()+"'>Update</a></td>"
-//                                + "<td><a href='/uiAPP/DeleteProduct?id="+u.getUserID()+"'>Delete</a></td>"
-//                                +"</td></tr>");   
-//                    }
+                    users = userclient.getAllUsers();
+                    out.println("<tr><th> Index </th><th>UserName</th><th>Email</th><th>Contact</th><th>Address</th><th>Role</th><th>Update</th><th>Delete</th></tr>");
+                    int i = 0;
+                    for(User u : users)
+                    {
+                        i++;
+                        out.println("<tr><td>"+i+"</td><td>"
+                                +u.getUserImage()+"</td><td>"
+                                +u.getEmailID()+"</td><td>"
+                                +u.getMobileNo()+"</td><td>"
+                                +u.getAddress()+"</td><td>"
+                                
+                                + "<td><a href='/uiAPP/UpdateProduct?id="+u.getUserID()+"'>Update</a></td>"
+                                + "<td><a href='/uiAPP/DeleteProduct?id="+u.getUserID()+"'>Delete</a></td>"
+                                +"</td></tr>");   
+                    }
 //                    out.println("<a href='/uiAPP/AddProduct'>Add Product</a>");
                     
 //                    productclient.updateProduct(20, prd);

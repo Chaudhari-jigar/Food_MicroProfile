@@ -121,4 +121,22 @@ public class CategoryManageBean implements Serializable{
     public String addCategory() {
         return "Category";
     }
+    
+    public void logOutsd() throws IOException {
+        FacesContext context34 = FacesContext.getCurrentInstance();
+        
+        HttpServletRequest req1 = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpSession session12 = req1.getSession();
+        session12.removeAttribute("role");
+        session12.removeAttribute("user");
+        session12.removeAttribute("pass");
+        session12.removeAttribute("Category");
+        session12.removeAttribute("Vendor");
+        session12.removeAttribute("cnt");
+        session12.removeAttribute("on");
+        req1.getSession().invalidate();
+        
+        ExternalContext context2 = FacesContext.getCurrentInstance().getExternalContext();
+        context2.redirect(context2.getRequestContextPath() + "/slidesigma.com/themes/html/costic/pages/LoginPage.jsf");
+    }
 }

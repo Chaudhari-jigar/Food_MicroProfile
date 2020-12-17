@@ -46,6 +46,9 @@ public class LoginServlet extends HttpServlet {
              if(session.getAttribute("status")!=null){
             if(session.getAttribute("status").toString().equals("Login_Success"))
             {    
+                session.setAttribute("role", "Dealer");
+                session.setAttribute("user", "admin");
+                session.setAttribute("pass", "admin");
                 response.sendRedirect("/uiAPP/slidesigma.com/themes/html/costic/pages/dashboard/ViewCategory.jsf");
 //                RequestDispatcher rd = request.getRequestDispatcher("/slidesigma.com/themes/html/costic/pages/dashboard/ViewCategory.jsf");
 //                rd.forward(request, response);

@@ -4,6 +4,7 @@ token\MPJWTToken.class
 servlet\CatServlet.class
 servlet\AddServlet.class
 client\ProductClient.class
+beans\UserManagedBean.class
 model\Role.class
 ProductServlet\AddProduct.class
 UserServlet\RegisterUser.class
