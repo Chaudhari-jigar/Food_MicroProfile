@@ -1,0 +1,13 @@
+com\mycompany\testcategorytemp\service\CategoryResource.class
+com\mycompany\testcategorytemp\config\Producers.class
+Entity\User.class
+com\mycompany\testcategorytemp\config\BootStrap.class
+com\mycompany\testcategorytemp\service\HealthCheckService.class
+Entity\Role.class
+com\mycompany\testcategorytemp\config\CrossOriginResourceSharingFilter.class
+Entity\Category.class
+Entity\Role_.class
+Entity\User_.class
+model\CategoryService.class
+com\mycompany\testcategorytemp\service\RawToken.class
+Entity\Category_.class
